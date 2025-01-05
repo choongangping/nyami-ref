@@ -10,22 +10,22 @@
 <body>
     <!-- 상단바 -->
     <%@ include file="/WEB-INF/views/templates/header.jsp" %>
-	<nav class="navbar-menu">
-        <a href="/noticeList" class="menu-item">공지사항</a>
-        <a href="/eventOnList" class="menu-item active">이벤트</a>
+	<nav className="navbar-menu">
+        <a href="/noticeList" className="menu-item">공지사항</a>
+        <a href="/eventOnList" className="menu-item active">이벤트</a>
     </nav>
 
-    <div class="content">
+    <div className="content">
         <!-- 제목과 날짜 -->
-        <div class="notice-header">
-            <h1 class="title">${event.title}</h1>
-            <p class="date">${event.startDate} ~ ${event.endDate} | 조회수 ${event.views}</p>
+        <div className="notice-header">
+            <h1 className="title">${event.title}</h1>
+            <p className="date">${event.startDate} ~ ${event.endDate} | 조회수 ${event.views}</p>
         </div>
 
         <!-- 본문 내용 -->
-        <div class="notice-content">
+        <div className="notice-content">
         	<c:if test="${not empty event.eventImage}">
-	        	<div class="notice-image">
+	        	<div className="notice-image">
 	        		<img src="${event.eventImage}">
 	        	</div>
         	</c:if>
@@ -37,16 +37,16 @@
         </div>
 
         <!-- 관련 공지사항 -->
-       <div class="related-notices">
+       <div className="related-notices">
             <p><strong>관련 공지</strong></p>
             <ul>
             	<c:if test="${nextEvent.id != null}">
-            		<li class="related-notices-item">
+            		<li className="related-notices-item">
             			이전글<a href="/event/${nextEvent.id}"> ${nextEvent.title}</a>
             		</li>
             	</c:if>
                 <c:if test="${preEvent.id != null}">
-                	<li class="related-notices-item">
+                	<li className="related-notices-item">
                 		다음글<a href="/event/${preEvent.id}"> ${preEvent.title}</a>
                 	</li>
                 </c:if>
@@ -54,8 +54,8 @@
         </div>
 
         <!-- 목록으로 돌아가기 버튼 -->
-        <div class="back-button">
-            <button onclick="location.href='/eventOnList'">목록</button>
+        <div className="back-button">
+            <button onClick="location.href='/eventOnList'">목록</button>
         </div>
     </div>
 <%@ include file="/WEB-INF/views/templates/footer.jsp" %>

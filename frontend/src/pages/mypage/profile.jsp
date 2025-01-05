@@ -12,24 +12,24 @@
 <body>
 	<!-- 상단바 -->
     <%@ include file="/WEB-INF/views/templates/header.jsp" %>
-    <div class="container">
-        <div class="content">
+    <div className="container">
+        <div className="content">
             <!-- 사이드바: 프로필 사진과 이름 표시 -->
             <%@ include file="/WEB-INF/views/mypage/templates/sidebar.jsp" %>
             <!-- 메인 콘텐츠 부분 -->
-            <div class="main-content">
+            <div className="main-content">
                 <!-- 탭 메뉴 -->
-                <div class="tabs">
-                    <button class="tab" data-path="/mypage" onclick="location.href='/mypage'">활동내역</button>
-					<button class="tab" data-path="/profile" onclick="location.href='/profile'">프로필</button>
-					<button class="tab" data-path="/account" onclick="location.href='/account'">계정 정보</button>
-					<button class="tab" data-path="/userPoint" onclick="location.href='/userPoint'">포인트</button>
+                <div className="tabs">
+                    <button className="tab" data-path="/mypage" onClick="location.href='/mypage'">활동내역</button>
+					<button className="tab" data-path="/profile" onClick="location.href='/profile'">프로필</button>
+					<button className="tab" data-path="/account" onClick="location.href='/account'">계정 정보</button>
+					<button className="tab" data-path="/userPoint" onClick="location.href='/userPoint'">포인트</button>
                 </div>
                 
-                <div class="expanded-content">
+                <div className="expanded-content">
 		            <!-- 프로필 섹션 -->
-		    		<div id="profile" class="section">
-						<div class="user-info">
+		    		<div id="profile" className="section">
+						<div className="user-info">
 					        <h3>회원정보</h3>
 					        <form action = "/profile" method = "post">
 						        <label for="nickname">닉네임</label>

@@ -12,51 +12,51 @@
 </head>    
     
 <body>
-<div class="ownerform-container">
+<div className="ownerform-container">
     
-  <div class="ownerform-header">
-    <h1 class="owner-logo">사업자회원가입</h1>
+  <div className="ownerform-header">
+    <h1 className="owner-logo">사업자회원가입</h1>
   </div>
 <form method="post" action="/joinMember">
 <input type="hidden" name="category" value="사업자">
 <input type="hidden" name="email" id="email">
 <input type="hidden" name="registrationNumber" id="registrationNumber">
-<div class="owner-num">
+<div className="owner-num">
 	<input type="text" placeholder="사업자" id="ownerCode1">
-    <span class="owner-symbol" >-</span>
+    <span className="owner-symbol" >-</span>
 	<input type="text" placeholder="번호" id="ownerCode2" >
-	<span class="owner-symbol" >-</span>
+	<span className="owner-symbol" >-</span>
 	<input type="text" placeholder="입력" id="ownerCode3">
 	<input type="button" value="사업자번호 인증"  id="ownerValidation">
 </div>
-<div id="validationMessage" class="instruction-text"></div>
+<div id="validationMessage" className="instruction-text"></div>
  
-  <div class="id-form">
+  <div className="id-form">
  	<input type="text" placeholder="아이디" id="memberId" name= "memberId">
  	<input type="button" value="아이디중복검사" id="idCheck-btn">
- 	<div id="id-check-result" class="check-result"></div> 
+ 	<div id="id-check-result" className="check-result"></div> 
  </div>
 
 
- <div class="id-form">
+ <div className="id-form">
  	<input type="text" placeholder="닉네임" id="nickname" name= "nickname">
  	<input type="button" value="닉네임중복검사" id="nicknameCheck-btn">
- 	<div id="nickname-check-result" class="check-result"></div> 
+ 	<div id="nickname-check-result" className="check-result"></div> 
  </div> 
   
- <div class="passwd-form">
+ <div className="passwd-form">
     <input type="password" placeholder="비밀번호" id="passwd" name= "passwd">
     <input type="password" placeholder="비밀번호 확인" id="passwdCheck" name= "passwdCheck">
-    <div id="passwd-check-result" class="check-result"></div> 
+    <div id="passwd-check-result" className="check-result"></div> 
  </div> 
   
-<div class="email-form">
+<div className="email-form">
   
-  <input type="text" placeholder="이메일" class="email-input" id="mailid" name="mailid">
-  <span class="domain-symbol">@</span>
-  <input type="text" placeholder="도메인" class="email-input" id="domain" name="domain">
+  <input type="text" placeholder="이메일" className="email-input" id="mailid" name="mailid">
+  <span className="domain-symbol">@</span>
+  <input type="text" placeholder="도메인" className="email-input" id="domain" name="domain">
 
-  <select class="email-select" id="emailSelect">
+  <select className="email-select" id="emailSelect">
     <option value="">직접입력</option>
     <option value="naver.com">네이버</option>
     <option value="kakao.com">카카오</option>
@@ -70,11 +70,11 @@
       </div>   
     
     <!-- 인증 입력 필드와 확인 버튼이 나타날 위치 -->
-    <div id="verification-input-container" class="verification-container"></div> 
+    <div id="verification-input-container" className="verification-container"></div> 
     <!-- 인증 완료 메시지를 표시할 빈 div -->
-  	<div id="verificationMessage" class="verification-message"></div>
+  	<div id="verificationMessage" className="verification-message"></div>
     <!-- 회원가입 버튼 -->
-    <button type="submit" class="signcomplete" id="owner-signup-button" >회원가입</button>
+    <button type="submit" className="signcomplete" id="owner-signup-button" >회원가입</button>
     </div>
 </form>
 </body>

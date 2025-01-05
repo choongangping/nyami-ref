@@ -34,35 +34,35 @@ $(() => {
   function renderStorePopup(store, likeCount, review) {
     const storeDOM = `
       <div id="store-content">
-        <div class="container">
-            <div class="store-header">
+        <div className="container">
+            <div className="store-header">
                 <h2>${store.storeName} </h2>
-                <p id="likeButton" class="like-button">❤️ 찜 <span id="likeCount">${likeCount}</p></button>
+                <p id="likeButton" className="like-button">❤️ 찜 <span id="likeCount">${likeCount}</p></button>
             </div>
 
             <!-- 메인 사진 섹션 -->
-            <div class="section main-photo">
-                <!-- <div class="section-title">가게 메인 사진</div> -->
-                <div class="slider-container"> <!-- 슬라이더 컨테이너 추가 -->
-                    <div class="slider" id="slider">
-                        <div class="slide"><img src="/images/store/${store.mainImage1}" alt="Main Image 1"></div>
-                        <div class="slide"><img src="/images/store/${store.mainImage2}" alt="Main Image 2"></div>
+            <div className="section main-photo">
+                <!-- <div className="section-title">가게 메인 사진</div> -->
+                <div className="slider-container"> <!-- 슬라이더 컨테이너 추가 -->
+                    <div className="slider" id="slider">
+                        <div className="slide"><img src="/images/store/${store.mainImage1}" alt="Main Image 1"></div>
+                        <div className="slide"><img src="/images/store/${store.mainImage2}" alt="Main Image 2"></div>
                     </div>
                 </div>
-                <div class="slider-nav">
-                    <button aria-label="이전 슬라이드" onclick="moveToMainPhotoSlide(currentSlideIndex - 1)"></button>
-                    <button aria-label="다음 슬라이드" onclick="moveToMainPhotoSlide(currentSlideIndex + 1)"></button>
+                <div className="slider-nav">
+                    <button aria-label="이전 슬라이드" onClick="moveToMainPhotoSlide(currentSlideIndex - 1)"></button>
+                    <button aria-label="다음 슬라이드" onClick="moveToMainPhotoSlide(currentSlideIndex + 1)"></button>
                 </div>
-                <!-- <div class="store-info">
+                <!-- <div className="store-info">
                     <strong>가게주소:</strong> ${store.address}<br>
                     <strong>상세주소:</strong> ${store.detailAddress}<br>
                     <strong>전화번호:</strong> ${store.tel}<br>
                     <strong>영업시간:</strong> ${store.openTime}<br>
                     <strong>가게설명:</strong> ${store.storeDescription}<br>
                 </div> -->
-                <div class="store-info">
+                <div className="store-info">
                     <p><strong>🏠 주소:</strong> ${store.address}, ${store.detailAddress}</p>
-                    <div class="store-info-row">
+                    <div className="store-info-row">
                         <p><strong>📞 Tel:</strong> ${store.tel}</p>
                         <p><strong>⏰ 영업시간:</strong> ${store.openTime}</p>
                     </div>
@@ -71,31 +71,31 @@ $(() => {
             </div>
 
             <!-- 대표 메뉴 섹션 -->
-            <div class="section menu-price-section">
-                <div class="section-title">대표 메뉴</div>
+            <div className="section menu-price-section">
+                <div className="section-title">대표 메뉴</div>
                 <c:forEach var="menu" items="{menuList}">
-                    <div class="menu-card">
+                    <div className="menu-card">
                         <img src="/images/store/${store.menuImage}">
-                        <div class="menu-info">
-                            <p class="menu-name">${store.menuName}</p>
-                            <p class="menu-description">${store.menuDescription}</p>
-                            <p class="menu-price">${store.menuPrice}원</p>
+                        <div className="menu-info">
+                            <p className="menu-name">${store.menuName}</p>
+                            <p className="menu-description">${store.menuDescription}</p>
+                            <p className="menu-price">${store.menuPrice}원</p>
                         </div>
                     </div>
                 </c:forEach>
             </div>
 
             <!-- 메뉴 음식 사진 슬라이더 섹션 -->
-            <div class="section menu-photo-container">
-                <div class="section-title">메뉴 사진 모음</div>
-                <div class="menu-slider">
+            <div className="section menu-photo-container">
+                <div className="section-title">메뉴 사진 모음</div>
+                <div className="menu-slider">
                     <c:forEach var="menu" items="{menuList}">
-                        <div class="menu-slide"><img src="/images/store/${store.menuImage}"></div>
+                        <div className="menu-slide"><img src="/images/store/${store.menuImage}"></div>
                     </c:forEach>
                 </div>
-                <div class="menu-slider-nav">
-                    <button class="prev-button" aria-label="이전 슬라이드">&#10094;</button>
-                    <button class="next-button" aria-label="다음 슬라이드">&#10095;</button>
+                <div className="menu-slider-nav">
+                    <button className="prev-button" aria-label="이전 슬라이드">&#10094;</button>
+                    <button className="next-button" aria-label="다음 슬라이드">&#10095;</button>
                 </div>
             </div>
 
@@ -105,12 +105,12 @@ $(() => {
       </div>
     `;
 
-    if(review) {
+    if (review) {
       $('#review-content').html(storeDOM);
       $('.popup-content').css({
-          'width': '1000px',
-          'height': '80vh',
-          'max-height': '80vh'
+        width: '1000px',
+        height: '80vh',
+        'max-height': '80vh',
       });
     } else {
       $('#store-content').html(storeDOM);
