@@ -8,37 +8,37 @@
 <link rel="stylesheet" href="css/notice/eventListStyles.css">
 <body>
 	<%@ include file="/WEB-INF/views/templates/header.jsp" %>
-	<nav class="navbar-menu">
-		<a href="/noticeList" class="menu-item">공지사항</a> 
-		<a href="/eventList" class="menu-item active">이벤트</a>
+	<nav className="navbar-menu">
+		<a href="/noticeList" className="menu-item">공지사항</a> 
+		<a href="/eventList" className="menu-item active">이벤트</a>
 	</nav>
 	<!-- 이벤트 콘텐츠 -->
-	<div class="event-section">
+	<div className="event-section">
 	<h3>${member.nickname }</h3>
-		<div class="tab-header">
+		<div className="tab-header">
 			<a href="/eventOnList">진행중 이벤트</a>
-			<a class="active" href="/eventOffList">종료된 이벤트</a>
+			<a className="active" href="/eventOffList">종료된 이벤트</a>
 		</div>
-		<div class="category-tabs">
-			<button onclick = "location.href='/eventOffList'" class="${empty param.category ? 'active' : ''}">전체</button>
-			<button onclick = "location.href='/eventOffList?category=할인'" class="${param.category == '할인' ? 'active' : ''}">할인</button>
-			<button onclick = "location.href='/eventOffList?category=포인트'" class="${param.category == '포인트'? 'active' : ''}">포인트</button>
-			<button onclick = "location.href='/eventOffList?category=기타'" class="${param.category == '기타'? 'active' : ''}">기타</button>
+		<div className="category-tabs">
+			<button onClick = "location.href='/eventOffList'" className="${empty param.category ? 'active' : ''}">전체</button>
+			<button onClick = "location.href='/eventOffList?category=할인'" className="${param.category == '할인' ? 'active' : ''}">할인</button>
+			<button onClick = "location.href='/eventOffList?category=포인트'" className="${param.category == '포인트'? 'active' : ''}">포인트</button>
+			<button onClick = "location.href='/eventOffList?category=기타'" className="${param.category == '기타'? 'active' : ''}">기타</button>
 		</div>
 
-		<div class="event-items">
+		<div className="event-items">
 			<c:forEach var = "event" items = "${eventPageResponse.list}">
-				<a href="/event/${event.id}" class="event-item">
+				<a href="/event/${event.id}" className="event-item">
 					<img src="${event.eventImage}">
                 	<h3>${event.title}</h3>
                 	<span><fmt:formatDate value="${event.startDate}" pattern="yyyy/MM/dd" /> ~ <fmt:formatDate value="${event.endDate}" pattern="yyyy/MM/dd" /></span>
                 	<span>조회수${event.views}</span>
-                	<span class="category">${event.category}</span>
+                	<span className="category">${event.category}</span>
                 </a>	
 			</c:forEach>
 		</div>
 		<!-- 페이지네이션 -->
-        <div class="pagination">
+        <div className="pagination">
         	<c:if test="${eventPageResponse.startPage > 1}">
         		<a href="/eventOffList?page=${eventPageResponse.startPage-1}&category=${eventPageResponse.category}">이전</a>
         	</c:if>

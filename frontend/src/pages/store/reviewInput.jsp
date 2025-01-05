@@ -12,7 +12,7 @@
 <body>
 
 <!-- 리뷰 섹션 -->
-<div class="review-input-section">
+<div className="review-input-section">
     <h3>리뷰 작성하기</h3>
     <!-- form 태그에 있는 action 속성으로 서버에 데이터를 전송 -->
     <form action="submitReview" method="post" enctype="multipart/form-data">
@@ -23,7 +23,7 @@
         <c:choose>
             <c:when test="${sessionMember.memberId != 'anonymousUser'}">
                 <!-- 로그인된 사용자의 경우 닉네임을 텍스트로 출력 -->
-                <div class="nickname-container">
+                <div className="nickname-container">
                     <p>${sessionMember.nickname}님</p>
                 </div>
             </c:when>
@@ -39,7 +39,7 @@
         </select>
         
         <!-- 리뷰 내용 입력 -->
-        <textarea class="review-input" name="content"
+        <textarea className="review-input" name="content"
                   placeholder="${empty sessionMember.memberId ? '리뷰를 작성하려면 로그인을 해주세요' : '리뷰를 입력해주세요'}"
                   required ${sessionMember.memberId == 'anonymousUser' ? 'disabled' : ''}></textarea>
                      

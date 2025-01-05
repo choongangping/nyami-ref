@@ -44,56 +44,56 @@
     <main> <!-- main content start -->
         
     <!-- 이동경로 -->
-<div class="breadcrumb">
+<div className="breadcrumb">
     <!-- 업종 정보 -->
     <c:choose>
         <c:when test="${not empty categoryList[0].industry}">
-            <span class="breadcrumb-item">
+            <span className="breadcrumb-item">
                 ${categoryList[0].industry}
             </span>
         </c:when>
         <c:otherwise>
-            <span class="breadcrumb-item">업종 정보 없음</span>
+            <span className="breadcrumb-item">업종 정보 없음</span>
         </c:otherwise>
     </c:choose>
 
-    <span class="breadcrumb-separator">›</span>
+    <span className="breadcrumb-separator">›</span>
     
     <!-- 가게 이름 -->
     <c:choose>
         <c:when test="${not empty storeDetail.storeName}">
-            <span class="breadcrumb-current">${storeDetail.storeName}</span>
+            <span className="breadcrumb-current">${storeDetail.storeName}</span>
         </c:when>
         <c:otherwise>
-            <span class="breadcrumb-current">가게 이름 없음</span>
+            <span className="breadcrumb-current">가게 이름 없음</span>
         </c:otherwise>
     </c:choose>
 </div>
 
 
         <!-- 가게 이름과 찜 버튼 -->
-        <div class="container">
-            <div class="store-header">
+        <div className="container">
+            <div className="store-header">
                 <h2>${storeDetail.storeName} </h2>
-                <button id="likeButton" class="like-button">❤️ 찜하기 <span id="likeCount">${memberLike.likeCount}</span></button>
+                <button id="likeButton" className="like-button">❤️ 찜하기 <span id="likeCount">${memberLike.likeCount}</span></button>
             </div>
 
             <!-- 메인 사진 섹션 -->
-            <div class="section main-photo">
-                <!-- <div class="section-title">가게 메인 사진</div> -->
-                <div class="slider-container"> <!-- 슬라이더 컨테이너 추가 -->
-                    <div class="slider" id="slider">
-                        <div class="slide"><img src="${storeDetail.mainImage1}" alt="Main Image 1"></div>
-                        <div class="slide"><img src="${storeDetail.mainImage2}" alt="Main Image 2"></div>
+            <div className="section main-photo">
+                <!-- <div className="section-title">가게 메인 사진</div> -->
+                <div className="slider-container"> <!-- 슬라이더 컨테이너 추가 -->
+                    <div className="slider" id="slider">
+                        <div className="slide"><img src="${storeDetail.mainImage1}" alt="Main Image 1"></div>
+                        <div className="slide"><img src="${storeDetail.mainImage2}" alt="Main Image 2"></div>
                     </div>
                 </div>
-                <div class="slider-nav">
-                    <button aria-label="이전 슬라이드" onclick="moveToMainPhotoSlide(currentSlideIndex - 1)"></button>
-                    <button aria-label="다음 슬라이드" onclick="moveToMainPhotoSlide(currentSlideIndex + 1)"></button>
+                <div className="slider-nav">
+                    <button aria-label="이전 슬라이드" onClick="moveToMainPhotoSlide(currentSlideIndex - 1)"></button>
+                    <button aria-label="다음 슬라이드" onClick="moveToMainPhotoSlide(currentSlideIndex + 1)"></button>
                 </div>
-                <div class="store-info">
+                <div className="store-info">
                     <p><strong>🏠 주소:</strong> ${storeDetail.address}, ${storeDetail.detailAddress}</p>
-                    <div class="store-info-row">
+                    <div className="store-info-row">
                         <p><strong>📞 Tel:</strong> ${storeDetail.tel}</p>
                         <p style="line-height: 2; word-break: break-word;"><strong>⏰ 영업시간:</strong> ${storeDetail.openTime}</p>
                     </div>
@@ -103,38 +103,38 @@
 
 
             <!-- 대표 메뉴 섹션 -->
-            <div class="section menu-price-section">
-                <div class="section-title">대표 메뉴</div>
+            <div className="section menu-price-section">
+                <div className="section-title">대표 메뉴</div>
                 <c:forEach var="menu" items="${menuList}">
-                    <div class="menu-card">
+                    <div className="menu-card">
                         <img src="${menu.menuImage}">
-                        <div class="menu-info">
-                            <p class="menu-name">${menu.menuName}</p>
-                            <p class="menu-description">${menu.menuDescription }</p>
-                            <p class="menu-price">${menu.menuPrice}원</p>
+                        <div className="menu-info">
+                            <p className="menu-name">${menu.menuName}</p>
+                            <p className="menu-description">${menu.menuDescription }</p>
+                            <p className="menu-price">${menu.menuPrice}원</p>
                         </div>
                     </div>
                 </c:forEach>
             </div>
 	
             <!-- 메뉴 음식 사진 슬라이더 섹션 -->
-            <div class="section menu-photo-container">
-                <div class="section-title">메뉴 사진 모음</div>
-                <div class="menu-slider">
+            <div className="section menu-photo-container">
+                <div className="section-title">메뉴 사진 모음</div>
+                <div className="menu-slider">
                     <c:forEach var="menu" items="${menuList}">
-                        <div class="menu-slide"><img src="${menu.menuImage }"></div>
+                        <div className="menu-slide"><img src="${menu.menuImage }"></div>
                     </c:forEach>
                 </div>
-                <div class="menu-slider-nav">
-                    <button class="prev-button" aria-label="이전 슬라이드">&#10094;</button>
-                    <button class="next-button" aria-label="다음 슬라이드">&#10095;</button>
+                <div className="menu-slider-nav">
+                    <button className="prev-button" aria-label="이전 슬라이드">&#10094;</button>
+                    <button className="next-button" aria-label="다음 슬라이드">&#10095;</button>
                 </div>
             </div>
 
             <!-- 지도 섹션 -->
-            <div class="section map-section">
-                <div class="section-title">가게 상세지도</div>
-                <div id="map" class="map-container"></div>
+            <div className="section map-section">
+                <div className="section-title">가게 상세지도</div>
+                <div id="map" className="map-container"></div>
             </div>
 
             <!-- 리뷰 목록 섹션 -->

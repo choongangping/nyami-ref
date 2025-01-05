@@ -12,27 +12,27 @@
 <body>
 	<!-- 상단바 -->
 	<%@ include file="/WEB-INF/views/templates/header.jsp" %>
-    <div class="container">
-        <div class="content">
+    <div className="container">
+        <div className="content">
             <!-- 사이드바: 프로필 사진과 이름 표시 -->
             <%@ include file="/WEB-INF/views/mypage/templates/sidebar.jsp" %>
             <!-- 메인 콘텐츠 부분 -->
-            <div class="main-content">
+            <div className="main-content">
                 <!-- 탭 메뉴 -->
-                <div class="tabs">
-                    <button class="tab" data-path="/mypage" onclick="location.href='/mypage'">활동내역</button>
-					<button class="tab" data-path="/profile" onclick="location.href='/profile'">프로필</button>
-					<button class="tab" data-path="/account" onclick="location.href='/account'">계정 정보</button>
-					<button class="tab" data-path="/userPoint" onclick="location.href='/userPoint'">포인트</button>
+                <div className="tabs">
+                    <button className="tab" data-path="/mypage" onClick="location.href='/mypage'">활동내역</button>
+					<button className="tab" data-path="/profile" onClick="location.href='/profile'">프로필</button>
+					<button className="tab" data-path="/account" onClick="location.href='/account'">계정 정보</button>
+					<button className="tab" data-path="/userPoint" onClick="location.href='/userPoint'">포인트</button>
                 </div>
                 
-                <div class="expanded-content">
+                <div className="expanded-content">
 	                <!-- 내 활동 섹션 -->
-	                <div id="my-check" class="section">
+	                <div id="my-check" className="section">
 						<h3>좋아요</h3>
-						<div class="likes-slider">
+						<div className="likes-slider">
 							<c:forEach var="mypageLike" items= "${likePageResponse.list}">
-								<div class="item">
+								<div className="item">
 									<a href="/storeDetail?store_ID=${mypageLike.storeId}">
 										<img src="/images/store/${mypageLike.mainImage1}">
 									</a>
@@ -41,22 +41,22 @@
 							</c:forEach>
 						</div>
 						<!-- 페이지네이션 -->
-						<div class="pagination" id="likes-pagination">
+						<div className="pagination" id="likes-pagination">
 							<c:if test="${likPageResponse.startPage > 1}">
-								<button onclick="location.href='/mypage?${likePageResponse.startPage-1}'">이전</button>
+								<button onClick="location.href='/mypage?${likePageResponse.startPage-1}'">이전</button>
 							</c:if>
 							<c:forEach var="i" begin="${likePageResponse.startPage}" end="${likePageResponse.endPage}">
-								<button onclick="location.href='/mypage?likePage=${i}&reviewPage=${reviewPageResponse.currentPage}'" 
+								<button onClick="location.href='/mypage?likePage=${i}&reviewPage=${reviewPageResponse.currentPage}'" 
 								class = "${i == likePageResponse.currentPage ? 'active' : ''}">${i}</button>
 							</c:forEach>
 							<c:if test="${likePageResponse.endPage < likePageResponse.totalPage}">
-								<button onclick="location.href='/mypage?${likePageResponse.endPage+1}'">다음</button>
+								<button onClick="location.href='/mypage?${likePageResponse.endPage+1}'">다음</button>
 							</c:if>
 						</div>
 						<h3>리뷰</h3>
-						<div class="review-slider">
+						<div className="review-slider">
 							<c:forEach var="mypageReview" items= "${reviewPageResponse.list}">
-								<div class="item">
+								<div className="item">
 									<a href="/storeDetail?store_ID=${mypageReview.storeId}">
 										<img src="images/store/${mypageReview.mainImage1}">
 									</a>
@@ -65,51 +65,51 @@
 							</c:forEach>
 						</div>
 						<!-- 페이지네이션 -->
-						<div class="pagination" id="likes-pagination">
+						<div className="pagination" id="likes-pagination">
 							<c:if test="${reviewPageResponse.startPage > 1}">
-								<button onclick="location.href='/mypage?${reviewPageResponse.startPage-1}'">이전</button>
+								<button onClick="location.href='/mypage?${reviewPageResponse.startPage-1}'">이전</button>
 							</c:if>
 							<c:forEach var="i" begin="${reviewPageResponse.startPage}" end="${reviewPageResponse.endPage}">
-								<button onclick="location.href='/mypage?likePage=${likePageResponse.currentPage}&reviewPage=${i}'" 
+								<button onClick="location.href='/mypage?likePage=${likePageResponse.currentPage}&reviewPage=${i}'" 
 								class = "${i == reviewPageResponse.currentPage ? 'active' : ''}">${i}</button>
 							</c:forEach>
 							<c:if test="${likePageResponse.endPage < likePageResponse.totalPage}">
-								<button onclick="location.href='/mypage?${reviewPageResponse.endPage+1}'">다음</button>
+								<button onClick="location.href='/mypage?${reviewPageResponse.endPage+1}'">다음</button>
 							</c:if>
 						</div>
 						<!-- 사업자 가게 신청현황 -->
-						<div class="store-item">
+						<div className="store-item">
 								<!-- 사업자 회원에게만 보이는 가게 등록 바 -->
 								<c:if test="${store != null}">
 								<h3>내 가게 신청현황</h3>
 									<c:forEach var="store" items="${store}">
 										<!-- 가게 이름을 클릭 -->
-						                <h4 class="store-name open-popup" data-id="${store.id}">
+						                <h4 className="store-name open-popup" data-id="${store.id}">
 						                    ${store.storeName }
 						                </h4>
-										<div class="progress-bar">
-											<div class="${store.enrollStatus=='wait' ? 'step completed': 'step'}">
-												<div class="progress-icon">1</div>
+										<div className="progress-bar">
+											<div className="${store.enrollStatus=='wait' ? 'step completed': 'step'}">
+												<div className="progress-icon">1</div>
 												<p>가게 등록 요청</p>
 											</div>
-											<div class="line"></div>
-											<div class="${store.enrollStatus=='read' ? 'step completed': 'step'}">
-												<div class="progress-icon">2</div>
+											<div className="line"></div>
+											<div className="${store.enrollStatus=='read' ? 'step completed': 'step'}">
+												<div className="progress-icon">2</div>
 												<p>서류 심사 중</p>
 											</div>
-											<div class="line"></div>
-											<div class="${store.enrollStatus=='enrolled' ? 'step completed':'step'}">
-												<div class="progress-icon">3</div>
+											<div className="line"></div>
+											<div className="${store.enrollStatus=='enrolled' ? 'step completed':'step'}">
+												<div className="progress-icon">3</div>
 												<p>승인</p>
 											</div>
-											<div class="lineNo"></div>
-											<div class="${store.enrollStatus=='withdrawal' ? 'step failed':'step'}">
-												<div class="progress-icon">4</div>
+											<div className="lineNo"></div>
+											<div className="${store.enrollStatus=='withdrawal' ? 'step failed':'step'}">
+												<div className="progress-icon">4</div>
 												<p>거절</p>
 											</div>
 										</div>
 										<!-- 팝업창 -->
-										<div class="popup" id="popup-${store.id}" style="
+										<div className="popup" id="popup-${store.id}" style="
 										    display: none; 
 										    position: fixed; 
 										    top: 50%; 
@@ -142,13 +142,13 @@
 									    <c:if test="${store.enrollStatus == 'enrolled'}">
 									        <div style="margin-top: 15px; text-align: center;">
 									            <button style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;" 
-									                onclick="location.href='/storeDetail?store_ID=${store.id}'">
+									                onClick="location.href='/storeDetail?store_ID=${store.id}'">
 									                내 가게 보러가기
 									            </button>
 									        </div>
 									    </c:if>
 									    <div style="margin-top: 15px; text-align: center;">
-									        <button class="close-popup" style="padding: 10px 20px; background-color: #FF5C5C; color: white; border: none; border-radius: 5px; cursor: pointer;">
+									        <button className="close-popup" style="padding: 10px 20px; background-color: #FF5C5C; color: white; border: none; border-radius: 5px; cursor: pointer;">
 									            닫기
 									        </button>
 									    </div>
