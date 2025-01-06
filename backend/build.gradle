@@ -1,0 +1,49 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.10'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.project'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot 기본 의존성
+	implementation 'org.springframework.boot:spring-boot-starter-web' // 웹 애플리케이션 및 REST API 개발
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA와 데이터베이스 연동
+	implementation 'org.springframework.boot:spring-boot-starter-security' // Spring Security 지원
+	implementation 'org.springframework.boot:spring-boot-starter-graphql' // GraphQL 지원
+
+	// MySQL 데이터베이스 드라이버
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// Lombok
+	compileOnly 'org.projectlombok:lombok' // 컴파일 시 Lombok 지원
+	annotationProcessor 'org.projectlombok:lombok' // Lombok 어노테이션 처리
+
+	// .env 파일 로드 (환경 변수 관리)
+	implementation 'io.github.cdimascio:dotenv-java:3.1.0'
+
+	// 테스트 의존성
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' // Spring Boot 테스트
+	testImplementation 'org.springframework.security:spring-security-test' // Spring Security 테스트
+	testImplementation 'org.springframework.graphql:spring-graphql-test' // Graphql 테스트
+	testImplementation 'com.h2database:h2' // 테스트용 H2 데이터베이스
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // JUnit 테스트 실행기
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
