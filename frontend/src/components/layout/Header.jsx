@@ -10,7 +10,7 @@ const Header = () => {
 
   const loggedInLinks = [
     { path: '/profile', label: '프로필' },
-    { path: '/mypage', label: '활동내역' },
+    { path: '/activity', label: '활동내역' },
     { path: '/account', label: '계정정보' },
     { path: '/logout', label: '로그아웃' },
   ];
