@@ -5,11 +5,15 @@ import Home from './pages/Home';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
-import CustomerSupport from './components/policy/CustomerSupport';
-import EmailInquiry from './components/policy/EmailInquiry';
-import TermsOfService from './components/policy/TermsOfService';
+import CustomerSupport from './features/policy/CustomerSupport';
+import EmailInquiry from './features/policy/EmailInquiry';
+import TermsOfService from './features/policy/TermsOfService';
+import MyPage from './pages/mypage/MyPage';
+import Activity from './features/mypage/Activity';
+import Profile from './features/mypage/Profile';
+import Account from './features/mypage/Account';
 
-import StoreRegistrationForm from './pages/store/StoreRegistrationForm';
+//import StoreRegistrationForm from './pages/store/StoreRegistrationForm';
 
 /**
  * Header, Footer가 포함된 기본 레이아웃입니다.
@@ -56,7 +60,12 @@ function App() {
           <Route path="/email" element={<EmailInquiry />} />
           <Route path="/terms" element={<TermsOfService />} />
 
-          <Route path="/store/new" element={<StoreRegistrationForm />} />
+          {/* mypage 라우트 -> 중앙 집중식 관리에 용이하여 App.js에 라우트 정의 */}
+          <Route path="/mypage/*" element={<MyPage />}>
+            <Route path="activity" element={<Activity />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="account" element={<Account />} />
+          </Route>
         </Route>
 
         {/* Header, Footer가 포함되지 않는 컴포넌트 */}

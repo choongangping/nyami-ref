@@ -3,7 +3,7 @@ import styles from './Account.module.css';
 const Profile = () => {
   return (
     <>
-      <div></div>
+      <div>프로필</div>
     </>
   );
 };
