@@ -1,0 +1,96 @@
+/* Footer Styles */
+/*============================================================================*/
+
+.footer {
+  background-color: #f8f8f8;
+  padding: 40px 20px;
+  color: #333;
+  font-size: 14px;
+  margin-top: 100px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.customer-center {
+  width: 50%;
+  margin-left: 10px;
+}
+
+.customer-center h3 {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.customer-center p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.customer-center button {
+  background-color: #b07c83;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.company-links {
+  width: 50%;
+  margin-left: 10px;
+}
+
+.company-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.company-links ul li {
+  margin-bottom: 5px;
+}
+
+.company-links ul li a {
+  color: #666;
+  text-decoration: none;
+}
+
+.company-links ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+}
+
+.footer-content > div {
+  padding-right: 20px;
+  border-right: 1px solid #ccc;
+}
+
+.footer-content > div:last-child {
+  border-right: none;
+}
+
+.footer h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer h3 a:visited,
+.footer h3 a:hover,
+.footer h3 a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+.time {
+  margin-left: 10px;
+}

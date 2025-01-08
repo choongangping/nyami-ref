@@ -1,4 +1,3 @@
-// CSS
 import styles from './Account.module.css';
 
 const Profile = () => {

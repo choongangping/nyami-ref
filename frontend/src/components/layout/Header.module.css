@@ -1,0 +1,24 @@
+/* ============================= */
+/* Header */
+/* ============================= */
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 0.95;
+}
+
+/* ============================= */
+/* Header - Logo */
+/* ============================= */
+
+.mainLogo {
+  width: 160px;
+  height: auto;
+}
