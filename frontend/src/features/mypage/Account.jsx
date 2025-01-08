@@ -4,7 +4,7 @@ import styles from './Account.module.css';
 const Account = () => {
   return (
     <>
-      <div></div>
+      <div>계정 정보</div>
     </>
   );
 };
