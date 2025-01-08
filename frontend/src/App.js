@@ -7,11 +7,11 @@ import Home from './pages/Home';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
-import CustomerSupport from './components/policy/CustomerSupport';
-import EmailInquiry from './components/policy/EmailInquiry';
-import TermsOfService from './components/policy/TermsOfService';
+import CustomerSupport from './features/policy/CustomerSupport';
+import EmailInquiry from './features/policy/EmailInquiry';
+import TermsOfService from './features/policy/TermsOfService';
 
-import StoreRegistrationForm from './pages/store/StoreRegistrationForm';
+//import StoreRegistrationForm from './pages/store/StoreRegistrationForm';
 
 /**
  * Header, Footer가 포함된 기본 레이아웃입니다.
@@ -58,7 +58,7 @@ function App() {
           <Route path="/email" element={<EmailInquiry />} />
           <Route path="/terms" element={<TermsOfService />} />
 
-          <Route path="/store/new" element={<StoreRegistrationForm />} />
+          {/* <Route path="/store/new" element={<StoreRegistrationForm />} /> */}
         </Route>
 
         {/* Header, Footer가 포함되지 않는 컴포넌트 */}
