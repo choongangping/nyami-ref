@@ -1,4 +1,3 @@
-// CSS
 import styles from './StoreDetail.module.css';
 
 const StoreDetail = () => {

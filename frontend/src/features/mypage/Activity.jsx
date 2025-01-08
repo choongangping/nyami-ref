@@ -1,4 +1,3 @@
-// CSS
 import styles from './Activity.module.css';
 
 const Activity = () => {

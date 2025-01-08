@@ -1,4 +1,3 @@
-// CSS
 import './TermsOfService.css';
 
 const TermsOfService = () => {

@@ -1,4 +1,3 @@
-// CSS
 import styles from './StoreList.module.css';
 
 const StoreList = () => {

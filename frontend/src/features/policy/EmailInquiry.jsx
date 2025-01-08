@@ -1,4 +1,3 @@
-// CSS
 import './EmailInquiry.css';
 
 const EmailInquiry = () => {
