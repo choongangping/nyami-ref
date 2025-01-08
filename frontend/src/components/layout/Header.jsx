@@ -1,4 +1,3 @@
-// images
 import Logo from '../../assets/images/logo.png';
 
 const Header = () => {
@@ -17,7 +16,9 @@ const Header = () => {
           </a>
           <button className="menu-btn"> ☰ </button>
           <div className="user-popup">
-            <span className="welcome-message">환영합니다, $sessionMember.nickname님!</span>
+            <span className="welcome-message">
+              환영합니다, $sessionMember.nickname님!
+            </span>
             <a href="/profile">프로필</a>
             <a href="/mypage">활동내역</a>
             <a href="/account">계정정보</a>

@@ -1,8 +1,6 @@
-// Hooks
 import React from 'react';
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 
-// Page / Routes
 import Home from './pages/Home';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
