@@ -6,14 +6,12 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
 import CustomerSupport from './features/policy/CustomerSupport';
-import EmailInquiry from './features/policy/EmailInquiry';
 import TermsOfService from './features/policy/TermsOfService';
+
 import MyPage from './pages/mypage/MyPage';
 import Activity from './features/mypage/Activity';
 import Profile from './features/mypage/Profile';
 import Account from './features/mypage/Account';
-
-//import StoreRegistrationForm from './pages/store/StoreRegistrationForm';
 
 /**
  * Header, Footer가 포함된 기본 레이아웃입니다.
@@ -57,7 +55,6 @@ function App() {
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/support" element={<CustomerSupport />} />
-          <Route path="/email" element={<EmailInquiry />} />
           <Route path="/terms" element={<TermsOfService />} />
 
           {/* mypage 라우트 -> 중앙 집중식 관리에 용이하여 App.js에 라우트 정의 */}
