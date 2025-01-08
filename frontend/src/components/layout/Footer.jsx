@@ -1,8 +1,11 @@
+import { Link } from 'react-router-dom';
+import styles from './Footer.module.css';
+
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <div className="customer-center">
+    <footer className={styles['footer']}>
+      <div className={styles['footer-content']}>
+        <div className={styles['customer-center']}>
           <p>평일: 전체 문의 상담</p>
           <p>토요일: 제휴 가게 신청 상담</p>
           <p>일요일: 휴무</p>
@@ -10,25 +13,22 @@ const Footer = () => {
           <button>카카오톡 상담</button>
           <button>이메일 문의</button>
         </div>
-        <div className="company-links">
+        <div className={styles['company-links']}>
           <ul>
             <li>
-              <a href="/support">고객센터</a>
+              <Link to="/support">고객센터</Link>
             </li>
             <li>
-              <a href="/terms">이용 약관</a>
+              <Link to="/terms">이용약관</Link>
             </li>
             <li>
-              <a href="/storeRegistration">사업자 가게 등록</a>
-            </li>
-            <li>
-              <a href="/noticeList">공지 사항</a>
+              <Link to="/terms">임시</Link>
             </li>
           </ul>
         </div>
       </div>
-      <div className="footer-bottom">
-        <p>Copyright 2024. , Nyaminyami Co., Ltd. All rights reserved.</p>
+      <div className={styles['footer-bottom']}>
+        <p>Copyright 2025. , Nyami Co., Ltd. All rights reserved.</p>
       </div>
     </footer>
   );

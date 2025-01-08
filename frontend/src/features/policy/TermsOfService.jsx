@@ -1,76 +1,76 @@
-import './TermsOfService.css';
+import styles from './TermsOfService.module.css';
 
 const TermsOfService = () => {
   return (
     <>
-      <div className="header-container">
-        <h1 className="title">이용 약관</h1>
-        <p className="date">2024.10.31</p>
+      <div className={styles['header-container']}>
+        <h1 className={styles['title']}>이용 약관</h1>
+        <p className={styles['date']}>2024.10.31</p>
       </div>
 
-      <div className="terms-container">
-        <div className="terms-sections">
-          <div className="section">
+      <div className={styles['terms-container']}>
+        <div className={styles['terms-sections']}>
+          <div className={styles['section']}>
             <h2>제 1 장 서비스 소개</h2>
             <ul>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section1">제 1 조 (목적)</a>
               </li>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section2">제 2 조 (정의)</a>
               </li>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section3">제 3 조 (약관의 설명 및 개정)</a>
               </li>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section4">제 4 조 (약관 외 준칙)</a>
               </li>
             </ul>
           </div>
 
-          <div className="section">
+          <div className={styles['section']}>
             <h2>제 2 장 서비스 이용 안내</h2>
             <ul>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section5">제 5 조 (회원가입)</a>
               </li>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section6">제 6 조 (이용요금)</a>
               </li>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section7">제 7 조 (개인정보)</a>
               </li>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section8">제 8 조 (ID 및 비밀번호 관리)</a>
               </li>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section9">제 9 조 (서비스 제공)</a>
               </li>
             </ul>
           </div>
 
-          <div className="section">
+          <div className={styles['section']}>
             <h2>제 3 장 이용자의 권리와 의무</h2>
             <ul>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section10">제 10 조 (이용자의 의무)</a>
               </li>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section11">제 11 조 (콘텐츠의 저작권)</a>
               </li>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section12">제 12 조 (서비스 중단)</a>
               </li>
             </ul>
           </div>
 
-          <div className="section">
+          <div className={styles['section']}>
             <h2>제 4 장 기타</h2>
             <ul>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section13">제 13 조 (분쟁 해결)</a>
               </li>
-              <li className="terms-item">
+              <li className={styles['terms-item']}>
                 <a href="#section14">제 14 조 (관할법원)</a>
               </li>
             </ul>
@@ -78,23 +78,23 @@ const TermsOfService = () => {
         </div>
       </div>
 
-      <div className="detailed-terms">
-        <div className="detailed-terms-jang-head">
+      <div className={styles['detailed-terms']}>
+        <div className={styles['detailed-terms-jang-head']}>
           <h3>제 1 장 서비스 소개</h3>
-          <div className="detailed-terms-jo-head" id="section1">
+          <div className={styles['detailed-terms-jo-head']} id="section1">
             <p>
               <strong>제 1조 (목적)</strong>
               <br />이 약관은 외식 추천 서비스의 이용과 관련하여 서비스 제공자와
               이용자의 권리, 의무 및 책임을 규정함을 목적으로 합니다.
             </p>
           </div>
-          <div className="detailed-terms-jo" id="section2">
+          <div className={styles['detailed-terms-jo']} id="section2">
             <p>
               <strong>제 2조 (정의)</strong>
               <br />본 약관에서 사용하는 용어의 정의는 다음과 같습니다: ...
             </p>
           </div>
-          <div className="detailed-terms-jo" id="section3">
+          <div className={styles['detailed-terms-jo']} id="section3">
             <p>
               <strong>제 3조 (약관의 설명 및 개정)</strong>
               <br />
@@ -102,7 +102,7 @@ const TermsOfService = () => {
               수 있습니다. 변경 사항은 ...
             </p>
           </div>
-          <div className="detailed-terms-jo" id="section4">
+          <div className={styles['detailed-terms-jo']} id="section4">
             <p>
               <strong>제 4조 (약관 외 준칙)</strong>
               <br />이 약관에 명시되지 않은 사항에 대해서는 관련 법령 또는
@@ -111,9 +111,9 @@ const TermsOfService = () => {
           </div>
         </div>
 
-        <div className="detailed-terms-jang">
+        <div className={styles['detailed-terms-jang']}>
           <h3>제 2 장 서비스 이용 안내</h3>
-          <div className="detailed-terms-jo-head" id="section5">
+          <div className={styles['detailed-terms-jo-head']} id="section5">
             <p>
               <strong>제 5조 (회원가입)</strong>
               <br />
@@ -122,7 +122,7 @@ const TermsOfService = () => {
               체결됩니다.
             </p>
           </div>
-          <div className="detailed-terms-jo" id="section6">
+          <div className={styles['detailed-terms-jo']} id="section6">
             <p>
               <strong>제 6조 (이용요금)</strong>
               <br />
@@ -130,7 +130,7 @@ const TermsOfService = () => {
               이용요금이 발생할 수 있습니다.
             </p>
           </div>
-          <div className="detailed-terms-jo" id="section7">
+          <div className={styles['detailed-terms-jo']} id="section7">
             <p>
               <strong>제 7조 (개인정보)</strong>
               <br />
@@ -138,7 +138,7 @@ const TermsOfService = () => {
               이에 대한 자세한 사항은 개인정보 처리방침에 따릅니다.
             </p>
           </div>
-          <div className="detailed-terms-jo" id="section8">
+          <div className={styles['detailed-terms-jo']} id="section8">
             <p>
               <strong>제 8조 (ID 및 비밀번호 관리)</strong>
               <br />
@@ -146,7 +146,7 @@ const TermsOfService = () => {
               소홀히 하여 발생한 손해에 대한 책임은 이용자에게 있습니다.
             </p>
           </div>
-          <div className="detailed-terms-jo" id="section9">
+          <div className={styles['detailed-terms-jo']} id="section9">
             <p>
               <strong>제 9조 (서비스 제공)</strong>
               <br />
@@ -156,9 +156,9 @@ const TermsOfService = () => {
           </div>
         </div>
 
-        <div className="detailed-terms-jang">
+        <div className={styles['detailed-terms-jang']}>
           <h3>제 3 장 이용자의 권리와 의무</h3>
-          <div className="detailed-terms-jo-head" id="section10">
+          <div className={styles['detailed-terms-jo-head']} id="section10">
             <p>
               <strong>제 10조 (이용자의 의무)</strong>
               <br />
@@ -166,7 +166,7 @@ const TermsOfService = () => {
               행위를 하지 않아야 합니다.
             </p>
           </div>
-          <div className="detailed-terms-jo" id="section11">
+          <div className={styles['detailed-terms-jo']} id="section11">
             <p>
               <strong>제 11조 (콘텐츠의 저작권)</strong>
               <br />
@@ -174,7 +174,7 @@ const TermsOfService = () => {
               무단으로 복제, 배포할 수 없습니다.
             </p>
           </div>
-          <div className="detailed-terms-jo" id="section12">
+          <div className={styles['detailed-terms-jo']} id="section12">
             <p>
               <strong>제 12조 (서비스 중단)</strong>
               <br />
@@ -184,16 +184,16 @@ const TermsOfService = () => {
           </div>
         </div>
 
-        <div className="detailed-terms-jang">
+        <div className={styles['detailed-terms-jang']}>
           <h3>제 4 장 기타</h3>
-          <div className="detailed-terms-jo-head" id="section13">
+          <div className={styles['detailed-terms-jo-head']} id="section13">
             <p>
               <strong>제 13조 (분쟁 해결)</strong>
               <br />이 약관과 관련된 분쟁이 발생할 경우, 회사와 이용자는 상호
               합의하여 해결하도록 노력합니다.
             </p>
           </div>
-          <div className="detailed-terms-jo" id="section14">
+          <div className={styles['detailed-terms-jo']} id="section14">
             <p>
               <strong>제 14조 (관할법원)</strong>
               <br />이 약관에 의한 서비스 이용과 관련된 소송은 회사의 본사
