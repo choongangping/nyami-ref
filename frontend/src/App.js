@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
+import LoginForm from './pages/login/LoginForm';
+import SignUpForm from './pages/login/SignUpForm';
 import CustomerSupport from './features/policy/CustomerSupport';
 import TermsOfService from './features/policy/TermsOfService';
 
@@ -67,6 +69,8 @@ function App() {
 
         {/* Header, Footer가 포함되지 않는 컴포넌트 */}
         <Route element={<MinimalLayout />}></Route>
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<SignUpForm />} />
       </Routes>
     </BrowserRouter>
   );
