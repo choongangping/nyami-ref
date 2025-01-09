@@ -1,14 +1,20 @@
-// Hooks
 import React from 'react';
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 
-// Page / Routes
 import Home from './pages/Home';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
 import LoginForm from './pages/login/LoginForm';
 import SignUpForm from './pages/login/SignUpForm';
+import CustomerSupport from './features/policy/CustomerSupport';
+import TermsOfService from './features/policy/TermsOfService';
+
+import MyPage from './pages/mypage/MyPage';
+import Activity from './features/mypage/Activity';
+import Profile from './features/mypage/Profile';
+import Account from './features/mypage/Account';
+
 /**
  * Header, Footer가 포함된 기본 레이아웃입니다.
  *
@@ -50,6 +56,15 @@ function App() {
         {/* Header, Footer가 포함되는 컴포넌트 */}
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/support" element={<CustomerSupport />} />
+          <Route path="/terms" element={<TermsOfService />} />
+
+          {/* mypage 라우트 -> 중앙 집중식 관리에 용이하여 App.js에 라우트 정의 */}
+          <Route path="/mypage/*" element={<MyPage />}>
+            <Route path="activity" element={<Activity />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="account" element={<Account />} />
+          </Route>
         </Route>
 
         {/* Header, Footer가 포함되지 않는 컴포넌트 */}

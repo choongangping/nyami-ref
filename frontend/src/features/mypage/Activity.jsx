@@ -1,10 +1,9 @@
-// CSS
 import styles from './Activity.module.css';
 
 const Activity = () => {
   return (
     <>
-      <div></div>
+      <div>활동 내역</div>
     </>
   );
 };
