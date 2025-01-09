@@ -11,9 +11,9 @@ import CustomerSupport from './features/policy/CustomerSupport';
 import TermsOfService from './features/policy/TermsOfService';
 
 import MyPage from './pages/mypage/MyPage';
-import Activity from './features/mypage/Activity';
-import Profile from './features/mypage/Profile';
-import Account from './features/mypage/Account';
+import Activity from './features/mypage/content/Activity';
+import Profile from './features/mypage/content/Profile';
+import Account from './features/mypage/content/Account';
 
 /**
  * Header, Footer가 포함된 기본 레이아웃입니다.
