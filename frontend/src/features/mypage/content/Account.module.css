@@ -1,0 +1,97 @@
+.section {
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.emailInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emailInput {
+  flex: 1;
+  padding: 8px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.emailButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.emailButton:hover {
+  background-color: #0056b3;
+}
+
+.infoText {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.socialButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.socialButton {
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.socialButton:hover {
+  background-color: #e2e6ea;
+}
+
+.deleteBox {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+.deleteAccount {
+  margin-top: 10px;
+}
+
+.deleteButton {
+  display: block;
+  margin-top: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover {
+  background-color: #c82333;
+}
+
+.deleteAccount label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+}

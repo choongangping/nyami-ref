@@ -2,10 +2,10 @@ import styles from './Like.module.css';
 
 const Like = () => {
   return (
-    <div className={styles.activity}>
+    <div>
+      <h2>좋아요</h2>
       {/* 좋아요 섹션 */}
       <div className={styles.section}>
-        <h2>좋아요</h2>
         <div className={styles.grid}>
           <div className={styles.card}>
             <img src="/path/to/image1.jpg" alt="여섬" />

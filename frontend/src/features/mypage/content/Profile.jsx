@@ -3,7 +3,7 @@ import styles from './Profile.module.css';
 const Profile = () => {
   return (
     <div>
-      <h2>프로필</h2>
+      <h3>프로필</h3>
       <div className={styles.profile}>
         <div className={styles.form}>
           {/* 이름 */}
@@ -62,6 +62,7 @@ const Profile = () => {
             ></textarea>
             <span className={styles.charCount}>0/150</span>
           </div>
+          <button className={styles.profileButton}>등록</button>
         </div>
 
         {/* 프로필 이미지 */}
