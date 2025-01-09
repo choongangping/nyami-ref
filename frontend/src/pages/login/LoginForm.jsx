@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '../../components/container/Container';
-import InputField from '../../components/IiputField/InputField';
+import InputField from '../../components/inputField/InputField';
 import styles from './LoginForm.module.css';
 import images from '../../assets/images';
 import { Link } from 'react-router-dom';
