@@ -3,7 +3,7 @@ import styles from './Like.module.css';
 const Like = () => {
   return (
     <div>
-      <h2>좋아요</h2>
+      <h3>좋아요</h3>
       {/* 좋아요 섹션 */}
       <div className={styles.section}>
         <div className={styles.grid}>
