@@ -1,28 +1,20 @@
-import { Routes, Route, Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
+import styles from './MyPage.module.css';
+import Sidebar from '../../features/mypage/sidebar/Sidebar';
 
 const MyPage = () => {
   return (
-    <>
+    <div className={styles.mypage}>
       {/* Sidebar */}
-      <nav>
-        <ul>
-          <li>
-            <Link to="/mypage/activity">Activity</Link>
-          </li>
-          <li>
-            <Link to="/mypage/profile">Profile</Link>
-          </li>
-          <li>
-            <Link to="/mypage/account">Account</Link>
-          </li>
-        </ul>
-      </nav>
-
+      <div className={styles.sidebar}>
+        <Sidebar />
+      </div>
       {/* 하위 라우트 렌더링 */}
-      <div>
+      <div className={styles.content}>
         <Outlet />
       </div>
-    </>
+    </div>
   );
 };
 

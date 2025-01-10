@@ -9,9 +9,10 @@ const Header = () => {
   const { pathname: currentPath } = useLocation();
 
   const loggedInLinks = [
-    { path: '/profile', label: '프로필' },
-    { path: '/activity', label: '활동내역' },
-    { path: '/account', label: '계정정보' },
+    { path: 'mypage/profile', label: '프로필' },
+    { path: 'mypage/account', label: '계정 정보' },
+    { path: 'mypage/like', label: '좋아요 내역' },
+    { path: 'mypage/review', label: '리뷰 내역' },
     { path: '/logout', label: '로그아웃' },
   ];
 

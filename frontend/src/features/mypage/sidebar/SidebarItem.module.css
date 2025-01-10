@@ -1,0 +1,28 @@
+.sidebar li {
+  margin-bottom: 20px; /* 각 항목 간의 간격 */
+}
+
+.sidebar a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: #333; /* 기본 텍스트 색상 */
+  font-size: 16px;
+  display: flex; /* 아이콘과 텍스트 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  padding: 10px;
+  border-radius: 8px; /* 살짝 둥근 모서리 */
+  transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #f1f3f5; /* Hover 시 배경색 */
+}
+
+.sidebar a svg {
+  font-size: 20px; /* 아이콘 크기 */
+  margin-right: 10px; /* 아이콘과 텍스트 사이 간격 */
+}
+
+/* 활성화된 버튼 */
+.active a {
+  background-color: #f1f3f5; /* Hover 시 배경색 */
+}

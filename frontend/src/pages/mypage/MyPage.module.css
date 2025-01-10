@@ -1,0 +1,30 @@
+/* 전체 레이아웃 설정 */
+.mypage {
+  display: flex;
+  min-height: 100vh; /* 전체 화면 높이 */
+  background-color: #f8f9fa; /* 배경색 */
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+  width: 356px; /* 고정된 사이드바 너비 */
+  background-color: #ffffff; /* 흰색 배경 */
+  border-right: 1px solid #ddd; /* 경계선 */
+  padding: 48px; /* 내부 여백 */
+  box-sizing: border-box;
+}
+
+/* 콘텐츠 영역 스타일 */
+.content {
+  flex: 1; /* 남은 화면 전체를 차지 */
+  padding: 48px; /* 여백 */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-left: 1px solid #ddd;
+}
+
+.content h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}

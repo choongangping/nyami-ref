@@ -5,13 +5,16 @@ import Home from './pages/Home';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
+import LoginForm from './pages/login/LoginForm';
+import SignUpForm from './pages/login/SignUpForm';
 import CustomerSupport from './features/policy/CustomerSupport';
 import TermsOfService from './features/policy/TermsOfService';
 
 import MyPage from './pages/mypage/MyPage';
-import Activity from './features/mypage/Activity';
-import Profile from './features/mypage/Profile';
-import Account from './features/mypage/Account';
+import Profile from './features/mypage/content/Profile';
+import Account from './features/mypage/content/Account';
+import Like from './features/mypage/content/Like';
+import Review from './features/mypage/content/Review';
 
 /**
  * Header, Footer가 포함된 기본 레이아웃입니다.
@@ -59,14 +62,17 @@ function App() {
 
           {/* mypage 라우트 -> 중앙 집중식 관리에 용이하여 App.js에 라우트 정의 */}
           <Route path="/mypage/*" element={<MyPage />}>
-            <Route path="activity" element={<Activity />} />
             <Route path="profile" element={<Profile />} />
             <Route path="account" element={<Account />} />
+            <Route path="like" element={<Like />} />
+            <Route path="review" element={<Review />} />
           </Route>
         </Route>
 
         {/* Header, Footer가 포함되지 않는 컴포넌트 */}
         <Route element={<MinimalLayout />}></Route>
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<SignUpForm />} />
       </Routes>
     </BrowserRouter>
   );
