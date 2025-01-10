@@ -1,7 +1,6 @@
 /*******************************
 *  Top Container
 ********************************/
-
 .containerTitle {
   margin-top: 10px;
 }
@@ -15,14 +14,14 @@
 
 .topContent {
   flex: 1;
-  background-color: #f0f0f0;
+  background-color: #f7f7f7;
   padding: 20px;
   border-radius: 5px;
 }
 
 .sliderContainer {
   flex: 1;
-  background-color: #f0f0f0;
+  background-color: #f7f7f7;
   padding: 20px;
   border-radius: 5px;
   overflow: hidden; /* 슬라이더 내부 요소가 넘치지 않도록 설정 */
@@ -41,7 +40,7 @@
 }
 
 .topSearchStore {
-  margin-top: 20px;
+  margin-top: 25px;
   width: 50%;
   float: left;
 }
@@ -68,7 +67,6 @@
 /*******************************
 *  Store Container
 ********************************/
-
 .storeContainer {
   margin-top: 50px;
 }
@@ -80,15 +78,13 @@
   padding: 70px;
 }
 
-.storeItem {
-  padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 3px;
+.storeList {
+  margin: 0 auto;
 }
 
 .storeListImage {
   width: 100%;
+  max-width: 350px;
 }
 
 .storeListName {

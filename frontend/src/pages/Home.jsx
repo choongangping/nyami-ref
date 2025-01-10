@@ -95,6 +95,7 @@ const Home = () => {
         </div>
       </div>
 
+      {/* 가게 리스트 컨테이너 */}
       <div className={styles.storeContainer}>
         <Button
           onMouseEnter={() => {
@@ -106,7 +107,7 @@ const Home = () => {
         </Button>
         <Button
           onClick={() => console.log('지역 클릭')}
-          style={{ cursor: 'default', marginLeft: '10px' }}
+          style={{ cursor: 'default', marginLeft: '20px' }}
         >
           지역
         </Button>
@@ -114,8 +115,8 @@ const Home = () => {
           {storeList &&
             storeList.length > 0 &&
             storeList.map((store) => (
-              <div key={store.id}>
-                <Link to={`/${store.id}`}>
+              <div key={store.id} className={styles.storeList}>
+                <Link to={`/store/${store.id}`}>
                   <img
                     className={styles.storeListImage}
                     src={store.imageUrl}
