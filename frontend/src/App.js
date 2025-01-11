@@ -5,8 +5,8 @@ import Home from './pages/Home';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
-import LoginForm from './pages/login/LoginForm';
-import SignUpForm from './pages/login/SignUpForm';
+import LoginForm from './pages/auth/LoginForm';
+import SignUpForm from './pages/auth/SignUpForm';
 import CustomerSupport from './features/policy/CustomerSupport';
 import TermsOfService from './features/policy/TermsOfService';
 

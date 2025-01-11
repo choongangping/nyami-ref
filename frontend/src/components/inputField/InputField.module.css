@@ -1,20 +1,10 @@
-.input {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px;
-}
-
-.default {
-    width: 200px;
-    font-size: 14px;
-}
-
-.large {
-    width: 300px;
-    font-size: 18px;
-}
-
-.small {
-    width: 100px;
-    font-size: 12px;
+.input[type="text"],
+.input[type="password"] {
+  width: 200px;
+  height: 8px;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 11px;
 }

@@ -1,0 +1,31 @@
+.container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  height: 400px;
+
+  position: fixed; /* 화면에 고정 */
+  top: 50%; /* 화면 위에서 50% 아래 */
+  left: 50%; /* 화면 왼쪽에서 50% 오른쪽 */
+  transform: translate(-50%, -50%); /* 중앙으로 이동 */
+}
+
+.closeButton {
+  width: 50px;
+  height: 20px;
+  background-color: #d8b2b2;
+  border: 1px solid #d8b2b2;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+  position: fixed; /* 화면에 고정 */
+  top: 90%; /* 화면 위에서 50% 아래 */
+  left: 50%; /* 화면 왼쪽에서 50% 오른쪽 */
+  transform: translate(-50%, -50%); /* 중앙으로 이동 */
+}
+.closeButton:hover {
+  background-color: #c49292;
+  cursor: pointer;
+}
