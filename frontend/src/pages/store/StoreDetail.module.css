@@ -1,0 +1,104 @@
+/*******************************
+*  Store Container
+********************************/
+.storeContainer {
+  width: 800px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0px auto;
+  margin-top: 50px;
+  padding: 60px;
+  background-color: #fcfcfc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb {
+  margin-top: 15px;
+  margin-left: 30px;
+  color: #666;
+}
+
+/*******************************
+*  Title Container
+********************************/
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 35px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+}
+
+.likeBtn {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.shareBtn {
+  cursor: pointer;
+}
+
+.imageSliderWrapper {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+
+.imageSliderWrapper img {
+  margin: 0 auto;
+  width: auto;
+  height: 220px;
+}
+
+:global(.slick-prev:before),
+:global(.slick-next:before) {
+  color: #ff9baa;
+}
+
+/*******************************
+*  Description Container
+********************************/
+.descriptionWrapper {
+  text-align: left;
+  line-height: 2;
+  word-break: break-word;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+.description {
+  margin-top: 40px;
+  line-height: 1.5;
+}
+
+/*******************************
+*  Map Container
+********************************/
+.mapContainer {
+  width: 100%;
+  height: 400px;
+  margin-top: 40px;
+  background-color: #d8d8d8;
+  text-align: center;
+  align-content: center;
+}
+
+/*******************************
+*  Utilities
+********************************/
+.line {
+  height: 1px;
+  background-color: #e2e2e2;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
