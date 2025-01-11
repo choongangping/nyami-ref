@@ -8,6 +8,7 @@ function InputField({ type, name, placeholder, customStyles }) {
       name={name}
       placeholder={placeholder}
       style={customStyles}
+      className={styles.input}
     />
   );
 }
