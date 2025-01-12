@@ -22,3 +22,14 @@
   width: 160px;
   height: auto;
 }
+
+/* ============================= */
+/* Header - Menu */
+/* ============================= */
+
+.headerIcon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
