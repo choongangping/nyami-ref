@@ -72,60 +72,63 @@ const Header = () => {
       <div>
         {user ? (
           // 로그인 메뉴
-          <>
-            {/* 아이콘 */}
-            <GoBellFill
-              className={styles.headerIcon}
-              ref={alertButtonRef}
-              onClick={handleAlertDropdown}
-            />
-            <RxHamburgerMenu
-              className={styles.headerIcon}
-              ref={menuButtonRef}
-              onClick={handleMenuDropdown}
-            />
+          <div className={styles.buttonContainer}>
+            <div className={styles.containerWrapper}>
+              {/* 아이콘 */}
+              <GoBellFill
+                className={styles.headerIcon}
+                ref={alertButtonRef}
+                onClick={handleAlertDropdown}
+              />
+              {/* 알림 드롭다운 */}
+              <BasicDropdown
+                isOpen={isAlertOpen}
+                onClose={closeAlertDropdown}
+                dropdownRef={alertDropdownRef}
+                buttonRef={alertButtonRef}
+              >
+                {alertContent.map((alert) => {
+                  return (
+                    <Link key={alert.id} to={`/${alert.id}`}>
+                      {alert.content}
+                    </Link>
+                  );
+                })}
+              </BasicDropdown>
+            </div>
 
-            {/* 메뉴 드롭다운 */}
-            <BasicDropdown
-              isOpen={isMenuOpen}
-              onClose={closeMenuDropdown}
-              dropdownRef={menuDropdownRef}
-              buttonRef={menuButtonRef}
-            >
-              {loggedInLinks.map((link) => {
-                return (
-                  <Link
-                    key={link.label}
-                    to={link.path}
-                    onClick={(e) => {
-                      if (link.label === '로그아웃') {
-                        e.preventDefault();
-                        setUser(false);
-                      }
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </BasicDropdown>
-
-            {/* 알림 드롭다운 */}
-            <BasicDropdown
-              isOpen={isAlertOpen}
-              onClose={closeAlertDropdown}
-              dropdownRef={alertDropdownRef}
-              buttonRef={alertButtonRef}
-            >
-              {alertContent.map((alert) => {
-                return (
-                  <Link key={alert.id} to={`/${alert.id}`}>
-                    {alert.content}
-                  </Link>
-                );
-              })}
-            </BasicDropdown>
-          </>
+            <div className={styles.containerWrapper}>
+              <RxHamburgerMenu
+                className={styles.headerIcon}
+                ref={menuButtonRef}
+                onClick={handleMenuDropdown}
+              />
+              {/* 메뉴 드롭다운 */}
+              <BasicDropdown
+                isOpen={isMenuOpen}
+                onClose={closeMenuDropdown}
+                dropdownRef={menuDropdownRef}
+                buttonRef={menuButtonRef}
+              >
+                {loggedInLinks.map((link) => {
+                  return (
+                    <Link
+                      key={link.label}
+                      to={link.path}
+                      onClick={(e) => {
+                        if (link.label === '로그아웃') {
+                          e.preventDefault();
+                          setUser(false);
+                        }
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </BasicDropdown>
+            </div>
+          </div>
         ) : (
           // 로그아웃 메뉴
           loggedOutLinks.map((link) => (

@@ -27,6 +27,14 @@
 /* Header - Menu */
 /* ============================= */
 
+.buttonContainer {
+  display: flex;
+}
+
+.containerWrapper {
+  position: relative;
+}
+
 .headerIcon {
   cursor: pointer;
   width: 30px;
