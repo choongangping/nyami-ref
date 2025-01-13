@@ -22,7 +22,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web' // 웹 애플리케이션 및 REST API 개발
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA와 데이터베이스 연동
 	implementation 'org.springframework.boot:spring-boot-starter-security' // Spring Security 지원
-	implementation 'org.springframework.boot:spring-boot-starter-graphql' // GraphQL 지원
+	implementation 'org.springframework.boot:spring-boot-starter-graphql'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux' // Spring webflux (외부 api 비동기 호출)
+	testImplementation 'io.projectreactor:reactor-test'// GraphQL 지원
 
 	// MySQL 데이터베이스 드라이버
 	runtimeOnly 'com.mysql:mysql-connector-j'
@@ -30,9 +32,6 @@ dependencies {
 	// Lombok
 	compileOnly 'org.projectlombok:lombok' // 컴파일 시 Lombok 지원
 	annotationProcessor 'org.projectlombok:lombok' // Lombok 어노테이션 처리
-
-	// .env 파일 로드 (환경 변수 관리)
-	implementation 'io.github.cdimascio:dotenv-java:3.1.0'
 
 	// 테스트 의존성
 	testImplementation 'org.springframework.boot:spring-boot-starter-test' // Spring Boot 테스트
