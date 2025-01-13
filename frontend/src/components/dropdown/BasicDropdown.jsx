@@ -45,11 +45,9 @@ const BasicDropdown = ({
   if (!isOpen) return null;
 
   return (
-    <div className={styles.dropdownContainer} ref={dropdownRef}>
-      <div className={styles.dropdown}>
-        <div className={styles.dropdownContent} onClick={onClose}>
-          {children}
-        </div>
+    <div className={styles.dropdown} ref={dropdownRef}>
+      <div className={styles.dropdownContent} onClick={onClose}>
+        {children}
       </div>
     </div>
   );
