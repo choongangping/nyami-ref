@@ -22,7 +22,7 @@ spring:
   application:
     name: project-nyami # 애플리케이션 이름
   config:
-    import: optional:file:./.env # 추가 설정 파일 로드
+    import: optional:file:./application.secret.yml # 추가 설정 파일 로드
 
 # 로그 설정
 logging:
