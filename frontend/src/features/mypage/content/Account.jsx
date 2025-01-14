@@ -3,7 +3,7 @@ import styles from './Account.module.css';
 const Account = () => {
   return (
     <div>
-      <h3>이메일 정보</h3>
+      <h3 className={styles.title}>이메일 정보</h3>
       {/* 이메일 정보 */}
       <div className={styles.section}>
         <div className={styles.emailInfo}>
