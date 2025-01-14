@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './AuthButton.module.css';
 
-function AuthButton({ value = '확인', customStyles, onClick }) {
+const AuthButton = ({ value = '확인', customStyles, onClick }) => {
   return (
     <input
       type="button"
@@ -11,6 +11,6 @@ function AuthButton({ value = '확인', customStyles, onClick }) {
       style={customStyles} // 추가적인 스타일 적용
     />
   );
-}
+};
 
 export default AuthButton;
