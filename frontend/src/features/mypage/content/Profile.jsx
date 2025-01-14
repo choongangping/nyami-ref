@@ -3,7 +3,7 @@ import styles from './Profile.module.css';
 const Profile = () => {
   return (
     <div>
-      <h3>프로필</h3>
+      <h3 className={styles.title}>프로필</h3>
       <div className={styles.profile}>
         <div className={styles.form}>
           {/* 이름 */}

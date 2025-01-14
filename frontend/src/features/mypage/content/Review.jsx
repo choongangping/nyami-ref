@@ -29,7 +29,7 @@ const Review = () => {
   ];
   return (
     <div>
-      <h3>리뷰</h3>
+      <h3 className={styles.title}>리뷰</h3>
       {/* 리뷰 섹션 */}
       <div className={styles.section}>
         {reviews.map((review, index) => (
