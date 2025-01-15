@@ -15,7 +15,7 @@ out/
 *.iml
 
 # 4. 환경 변수 및 비밀 정보
-.env
+application.secret.yml
 .env.local
 *.secret
 *.key

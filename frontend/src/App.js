@@ -10,6 +10,8 @@ import SignUpForm from './pages/auth/SignUpForm';
 import CustomerSupport from './features/policy/CustomerSupport';
 import TermsOfService from './features/policy/TermsOfService';
 
+import StoreDetail from './pages/store/StoreDetail';
+
 import MyPage from './pages/mypage/MyPage';
 import Profile from './features/mypage/content/Profile';
 import Account from './features/mypage/content/Account';
@@ -60,6 +62,8 @@ function App() {
           <Route path="/support" element={<CustomerSupport />} />
           <Route path="/terms" element={<TermsOfService />} />
 
+          <Route path="/store/:storeId" element={<StoreDetail />} />
+
           {/* mypage 라우트 -> 중앙 집중식 관리에 용이하여 App.js에 라우트 정의 */}
           <Route path="/mypage/*" element={<MyPage />}>
             <Route path="profile" element={<Profile />} />
@@ -70,9 +74,10 @@ function App() {
         </Route>
 
         {/* Header, Footer가 포함되지 않는 컴포넌트 */}
-        <Route element={<MinimalLayout />}></Route>
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/signup" element={<SignUpForm />} />
+        <Route element={<MinimalLayout />}>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
