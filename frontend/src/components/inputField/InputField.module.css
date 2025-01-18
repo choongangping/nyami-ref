@@ -1,10 +1,8 @@
-.input[type="text"],
-.input[type="password"] {
-  width: 200px;
-  height: 8px;
-  padding: 10px;
-  margin-bottom: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 11px;
+.input {
+  width: 10.5rem;
+  height: 0.5rem;
+  padding: 0.6rem;
+  border: 0.05rem solid #ddd;
+  border-radius: 0.25rem;
+  font-size: 0.7rem;
 }

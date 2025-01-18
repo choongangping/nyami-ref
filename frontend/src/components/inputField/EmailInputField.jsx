@@ -12,16 +12,13 @@ const EmailInputField = ({ onEmailChange, buttonValue = '인증' }) => {
     'hanmail.com',
     '직접 입력',
   ];
-
   const [emailId, setEmailId] = useState('');
   const [emailDomain, setEmailDomain] = useState('');
   const [isCustomDomain, setIsCustomDomain] = useState(false); // 직접 입력 활성화 여부
-
   const handleEmailIdChange = (e) => {
     setEmailId(e.target.value);
     onEmailChange(`${e.target.value}@${emailDomain}`);
   };
-
   const handleEmailDomainChange = (e) => {
     const value = e.target.value;
     if (value === '직접 입력') {
@@ -33,12 +30,10 @@ const EmailInputField = ({ onEmailChange, buttonValue = '인증' }) => {
       onEmailChange(`${emailId}@${value}`);
     }
   };
-
   const handleCustomDomainChange = (e) => {
     setEmailDomain(e.target.value);
     onEmailChange(`${emailId}@${e.target.value}`);
   };
-
   return (
     <div>
       <InputField
