@@ -6,7 +6,7 @@
   background-color: #ffd6dc;
   color: #626262;
   transition: background-color 0.3s ease;
-
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
   /* 버튼 글자 정렬*/
   display: flex; /* Flexbox 사용 */
   justify-content: center; /* 가로 중앙 정렬 */

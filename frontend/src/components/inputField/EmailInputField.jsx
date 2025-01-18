@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import InputField from '../inputField/InputField';
 import styles from './EmailInputField.module.css';
-import AuthButton from '../button/AuthButton';
-const EmailInputField = ({ onEmailChange, buttonValue = '인증' }) => {
+import Button from '../button/Button';
+const EmailInputField = ({ onEmailChange }) => {
   // 이메일 도메인 선택 옵션 (컴포넌트 내부 상수로 정의)
   const emailOptions = [
     '도메인 선택',
@@ -35,16 +35,16 @@ const EmailInputField = ({ onEmailChange, buttonValue = '인증' }) => {
     onEmailChange(`${emailId}@${e.target.value}`);
   };
   return (
-    <div>
+    <div className={styles.emailContainer}>
       <InputField
         type="text"
         name="mailId"
         placeholder="메일 아이디"
-        customStyles={{ width: '60px' }}
+        customStyles={{ width: '5.5rem' }}
         value={emailId}
         onChange={handleEmailIdChange}
       />
-      <label className={styles.label}>@</label>
+      <label className={styles.at}>@</label>
       {!isCustomDomain ? (
         <select
           className={styles.select}
@@ -56,6 +56,7 @@ const EmailInputField = ({ onEmailChange, buttonValue = '인증' }) => {
               {option}
             </option>
           ))}
+          ``
         </select>
       ) : (
         <InputField
@@ -63,12 +64,22 @@ const EmailInputField = ({ onEmailChange, buttonValue = '인증' }) => {
           name="customDomain"
           placeholder="직접 입력"
           value={emailDomain}
-          customStyles={{ width: '60px' }}
-          className={styles.input} // 동일 스타일 적용
+          customStyles={{ width: '5.5rem' }}
+          className={styles.input}
           onChange={handleCustomDomainChange}
         />
       )}{' '}
-      <AuthButton value={buttonValue}></AuthButton>
+      <Button
+        type="submit"
+        disabled={false}
+        customStyles={{
+          width: '2.5rem',
+          height: '1.3rem',
+          fontSize: '0.6rem',
+        }}
+      >
+        인증
+      </Button>
     </div>
   );
 };

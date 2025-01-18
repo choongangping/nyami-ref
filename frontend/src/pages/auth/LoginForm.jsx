@@ -4,18 +4,15 @@ import InputField from '../../components/inputField/InputField'; // InputField C
 import styles from './LoginForm.module.css';
 import images from '../../assets/images'; // Image file 사용을 위한 Image Module
 import { Link } from 'react-router-dom';
-import BasicModal from '../../components/modal/BasicModal';
-import EmailInputField from '../../components/inputField/EmailInputField';
 import Button from '../../components/button/Button';
-function LoginForm() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+import FindId from './FindId';
+import FindPwd from './FindPwd';
+const LoginForm = () => {
+  const [isIdModalOpen, setIdModalOpen] = useState(false); // 아이디 찾기 모달 상태
+  const [isPwdModalOpen, setPwdModalOpen] = useState(false); // 비밀번호 찾기 모달 상태
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-  const handleEmailChange = (email) => {
-    console.log('Complete Email:', email); // 최종 이메일 출력
-  };
-
+  const closeIdModal = () => setIdModalOpen(false); // 아이디 찾기 모달 닫기
+  const closePwdModal = () => setPwdModalOpen(false); // 비밀번호 찾기 모달 닫기
   return (
     <Container>
       <a>
@@ -37,7 +34,7 @@ function LoginForm() {
             customStyles={{
               width: '10.5rem',
               height: '1.5rem',
-              fontSize: '0.75em',
+              fontSize: '0.6rem',
             }}
           >
             로그인
@@ -58,53 +55,20 @@ function LoginForm() {
             </a>
           </div>
           <div className={styles.joinContainer}>
-            <div className={styles.guide}>
+            <div>
               <Link to="/signup">회원가입</Link>
             </div>
           </div>
           <div className={styles.findInfoContainer}>
-            <div className={styles.guide} onClick={openModal}>
-              아이디 찾기
-            </div>
-            <div className={styles.guide} onClick={openModal}>
-              비밀번호 찾기
-            </div>
+            {/* 정보 찾기 Modal 컴포넌트*/}
+            <FindId isOpen={isIdModalOpen} onClose={closeIdModal} />
+
+            <FindPwd isOpen={isPwdModalOpen} onClose={closePwdModal} />
           </div>
         </>
       }
-      <BasicModal isOpen={isModalOpen} onClose={closeModal}>
-        <div className={styles.intro}>아이디 찾기</div>
-        <div className={styles.guide2}>
-          회원가입 시, 인증했던 이메일을 입력해주세요.
-        </div>
-        <div className={styles.gap}>
-          <EmailInputField
-            onEmailChange={handleEmailChange}
-            buttonValue="확인"
-          />
-        </div>
-        <div className={styles.intro}>비밀번호 찾기</div>
-        <div className={styles.guide2}>
-          회원아이디와 인증된 이메일을 입력해주세요,<br></br> 15분간 유효한
-          비밀번호 재설정 링크가 발송됩니다.
-        </div>
-        <div className={styles.gap}>
-          <InputField
-            type="text"
-            name="id"
-            customStyles={{ width: '100px' }}
-            placeholder="아이디"
-          />
-        </div>
-        <div className={styles.gap}>
-          <EmailInputField
-            onEmailChange={handleEmailChange}
-            buttonValue="발송"
-          />
-        </div>
-      </BasicModal>
     </Container>
   );
-}
+};
 
 export default LoginForm;
