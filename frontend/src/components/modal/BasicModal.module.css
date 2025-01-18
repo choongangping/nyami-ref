@@ -32,5 +32,5 @@
   text-align: center; /* 텍스트 콘텐츠 중앙 정렬 */
 }
 .content > * {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }

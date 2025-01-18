@@ -12,7 +12,7 @@ const FindId = () => {
     <div>
       <div onClick={openIdModal}>아이디 찾기</div>
       <BasicModal isOpen={isIdModalOpen} onClose={closeIdModal}>
-        <h2>아이디 찾기</h2>
+        <h3>아이디 찾기</h3>
         <p>회원가입 때 인증한 이메일을 입력하세요.</p>
 
         <EmailInputField></EmailInputField>
