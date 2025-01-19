@@ -16,6 +16,14 @@ const Profile = () => {
   };
 
   const handleSubmit = () => {
+    if (!profile.name) {
+      alert('이름을 입력해주세요.');
+      return;
+    }
+    if (!profile.nickname) {
+      alert('닉네임을 입력해주세요.');
+      return;
+    }
     // 제출 로직 (예: 서버로 데이터 전송)
     console.log({
       profile,
