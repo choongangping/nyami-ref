@@ -11,6 +11,8 @@ const Sidebar = () => {
   ];
 
   return (
+    //  <nav> 태그: 내비게이션 역할을 명시적으로 나타내는 의미론적 태그로, 검색 엔진이나 스크린 리더가 이를 내비게이션 영역으로 인식합니다.
+    //  <div> 태그: 의미가 없는 단순한 컨테이너로 사용됩니다. 따라서 스크린 리더나 검색 엔진이 이 영역을 내비게이션으로 인식하지 못합니다.
     <nav className={styles.sidebar}>
       <ul>
         {menuItems.map((item, index) => (

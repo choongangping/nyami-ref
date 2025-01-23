@@ -1,9 +1,13 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Review.module.css';
 
 const Review = () => {
-  const reviews = [
+  const [reviews, setReviews] = useState([
     {
-      storename: '명륜진사갈비',
+      id: 1,
+      storeId: 1,
+      name: '명륜진사갈비',
       rating: 5.0,
       title: '고기가 사진과 다르면 어쩌지? 이런 생각이 들었는데...',
       content:
@@ -11,7 +15,9 @@ const Review = () => {
       image: '/path/to/image1.jpg',
     },
     {
-      storename: '맥도날드',
+      id: 2,
+      storeId: 2,
+      name: '맥도날드',
       rating: 5.0,
       title: '양념 맛집이라고 워낙 유명해서 속는 셈치고 구매했는데',
       content:
@@ -19,23 +25,37 @@ const Review = () => {
       image: '/path/to/image2.jpg',
     },
     {
-      storename: 'BHC치킨',
+      id: 3,
+      storeId: 3,
+      name: 'BHC치킨',
       rating: 5.0,
       title: '갈비는 양념 맛이 중요한데, 입맛에 안 맞으면 어쩌지?',
       content:
         '했는데, 좋은 재료로 만든다는 게 거짓 광고가 아니었네요. 너무 자극적이지도 않으면서 고기 맛 아는 그 맛에서 더더더 맛있었어요!',
       image: '/path/to/image3.jpg',
     },
-  ];
+  ]);
+
+  const navigate = useNavigate(); // 페이지 이동 함수
+
+  // 클릭 핸들러
+  const handleCardClick = (storeId) => {
+    navigate(`/store/${storeId}`); // 가게 페이지로 이동
+  };
+
   return (
     <div>
-      <h3>리뷰</h3>
+      <h3 className={styles.title}>리뷰</h3>
       {/* 리뷰 섹션 */}
       <div className={styles.section}>
-        {reviews.map((review, index) => (
-          <div key={index} className={styles.reviewCard}>
+        {reviews.map((review) => (
+          <div
+            key={review.id}
+            className={styles.reviewCard}
+            onClick={() => handleCardClick(review.storeId)}
+          >
             <div className={styles.header}>
-              <span className={styles.storename}>{review.storename}</span>
+              <span className={styles.name}>{review.name}</span>
               <span className={styles.rating}>
                 {'⭐'.repeat(review.rating)}
               </span>

@@ -1,17 +1,34 @@
-.label {
-  font-size: 12px;
-  color: gray;
-  margin-right: 10px;
+.logo {
+  width: 8em;
+  height: 2.2em;
+  cursor: pointer;
+  position: absolute; /* 부모기준 - 상대 */
+  top: 10%;
+  left: 50%; /* 부모의 수평 중심 */
+  transform: translateX(-50%); /* 수평 중심에서 자신의 절반만큼 왼쪽으로 이동 */
 }
-
-.intro {
-  font-size: 10px;
-  color: rgb(159, 159, 159);
-  margin-left: 35px;
-  margin-bottom: 15px;
-}
-
 .signupContainer {
-  margin-left: 35px;
-  margin-bottom: 2px;
+  width: 15rem;
+  height: 17rem;
+  position: absolute; /* 부모기준 - 상대 */
+  top: 25%;
+  left: 50%; /* 수평 중앙 */
+  transform: translateX(-50%); /* 수평 중심에서 자신의 절반만큼 왼쪽으로 이동 */
+}
+.signupContainer > * {
+  margin-bottom: 0.3rem;
+}
+.intro {
+  font-size: 0.6rem;
+  margin-bottom: 0.5rem;
+  color: rgb(159, 159, 159);
+}
+
+.guide {
+  position: absolute;
+  font-size: 0.6rem;
+  cursor: pointer;
+  top: 85%;
+  left: 50%; /* 수평 중앙 */
+  transform: translateX(-50%); /* 수평 중심에서 자신의 절반만큼 왼쪽으로 이동 */
 }
