@@ -15,6 +15,7 @@ const Button = ({
   onClick,
   size = 'medium',
   disabled = false,
+  customStyles = {},
   ...props
 }) => {
   return (
@@ -25,6 +26,7 @@ const Button = ({
       type="button"
       onClick={!disabled && onClick ? onClick : undefined}
       disabled={disabled}
+      style={customStyles}
       {...props}
     >
       {children}
