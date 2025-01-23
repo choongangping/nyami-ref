@@ -4,6 +4,7 @@
   border-radius: 4px;
   cursor: pointer;
   background-color: #ffd6dc;
+  padding: 0.5rem 1rem;
   color: #626262;
   transition: background-color 0.3s ease;
   white-space: nowrap; /* 텍스트 줄바꿈 방지 */
@@ -15,22 +16,6 @@
 
 .btn:hover {
   background-color: #ffcece;
-}
-
-/* 버튼 크기 */
-.small {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
-}
-
-.medium {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-}
-
-.large {
-  padding: 0.75rem 1.5rem;
-  font-size: 1.125rem;
 }
 
 /* 비활성화 */
