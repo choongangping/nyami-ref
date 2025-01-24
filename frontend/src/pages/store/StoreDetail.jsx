@@ -56,32 +56,27 @@ const StoreDetail = () => {
     {
       id: 1,
       imageUrl:
-        'https://i.namu.wiki/i/tRRaxMVsOsLIOzlHqNrtCWB7-Qgxv0d9_kUQnb3ywP2EUCwR5LAGP4aKq8B7H1b7BsMOfKdIXeZQoXQJyNntM4Tt2SZi1cXKK5KOoZO1WnP4ZF5-4t3OjAL8MIbiLY0PAQ1sH5A8vxItc34MwBkSuw.webp',
+        'https://blog.kakaocdn.net/dn/cICerT/btsII0BWx1X/dvYrTQKNdnKKuXcGWjcDK1/img.png',
     },
     {
       id: 2,
-      imageUrl:
-        'https://i.namu.wiki/i/_xlSn_Ks6zwHvQllo1ijnR3gTk_dXsv4RVBwuwW8aMfh9wVnhhdUC-fKD_MVB6hZgjtbCh7ULFK0934MY-cCVnIqv222CIO-oWNhiTuZ_Jkzt8PGoyGxTqr1LDjjXSgPC7LfqvObY9FUqOrbUWwhjw.webp',
+      imageUrl: 'https://img.siksinhot.com/article/1731376728963013.jpeg',
     },
     {
       id: 3,
-      imageUrl:
-        'https://i.namu.wiki/i/7bb4O99ucTdchw69vwNP6wvrpw9FMTcvHYHhRpVwyiHRtZcnKv_D1vqEdaqOT8KBLU-Rv2uIPm4MlUjiRd-6H8UcUubLKP6K6qp6xzUeNhZqMdsfrkMdIUM_shSCm-S5DMZbvkgmf63TQtu0OqI__Q.webp',
+      imageUrl: 'https://img.siksinhot.com/article/1731376729504014.jpeg',
     },
     {
       id: 4,
-      imageUrl:
-        'https://i.namu.wiki/i/SzzkkQ1gjDMcBm4MyquPOs6ZfkT3AArHppSRcHFL74j9mh0FsuZuI0sTTuFhMje6RxmNw2rbcdUEYiL4OniCdH0EkqB2ac1ymTdt5BXvwnDAq5XT2oY6gXtMfzDefZdOUKmfju-ItF3ShdO7TUKoqA.webp',
+      imageUrl: 'https://img.siksinhot.com/article/1731376729983015.jpeg',
     },
     {
       id: 5,
-      imageUrl:
-        'https://i.namu.wiki/i/111eRkLiptlNJY6aOUCXuQ0m5VGsK3LIkzwfDkIAxbhwH-RkiV8pwoEyZqqms1QTLIu4yFu4Tp_NYn3qo-J2XHnM9FSgbOu83gtvhqaAbp8Umsi-wBTChb2dPSinLIroHkdKLH4-hY1BPAwwxj76Sw.webp',
+      imageUrl: 'https://img.siksinhot.com/article/1731376730473016.jpeg',
     },
     {
       id: 6,
-      imageUrl:
-        'https://i.namu.wiki/i/8AaEuh-HW3PNCGx25IwHike5Ua0nhGkNTatd3F9fiX31n-lOEw_hA6zQseOApP_sR-eKiI5y1JtQJcpCnYe6xCiDOmuGrN_Nh8gzb7_LDr68XLeiD5xsHkjd_h7I3OlmPtqlg9JX_UZkVn1rQXCk6A.webp',
+      imageUrl: 'https://img.siksinhot.com/article/1731376730891017.jpeg',
     },
   ];
 
