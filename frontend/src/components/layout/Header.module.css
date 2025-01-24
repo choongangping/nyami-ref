@@ -27,6 +27,11 @@
 /* Header - Menu */
 /* ============================= */
 
+.menuContainer {
+  display: flex;
+  gap: 10px;
+}
+
 .buttonContainer {
   display: flex;
 }
@@ -39,5 +44,4 @@
   cursor: pointer;
   width: 30px;
   height: 30px;
-  margin-left: 10px;
 }

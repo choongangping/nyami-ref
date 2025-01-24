@@ -3,11 +3,12 @@ import Container from '../../components/container/Container'; // Container Compo
 import InputField from '../../components/inputField/InputField'; // InputField Component
 import styles from './LoginForm.module.css';
 import images from '../../assets/images'; // Image file 사용을 위한 Image Module
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/button/Button';
 import FindId from './FindId';
 import FindPwd from './FindPwd';
 const LoginForm = () => {
+  const navigator = useNavigate();
   const [isIdModalOpen, setIdModalOpen] = useState(false); // 아이디 찾기 모달 상태
   const [isPwdModalOpen, setPwdModalOpen] = useState(false); // 비밀번호 찾기 모달 상태
 
@@ -35,6 +36,15 @@ const LoginForm = () => {
               width: '10.5rem',
               height: '1.5rem',
               fontSize: '0.6rem',
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              localStorage.setItem(
+                'user',
+                JSON.stringify({ username: 'admin', nickname: 'nickname' })
+              );
+              alert('로그인 성공');
+              navigator('/');
             }}
           >
             로그인
