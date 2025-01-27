@@ -2,14 +2,11 @@
 *  Store Container
 ********************************/
 .storeContainer {
-  width: 800px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 1000px;
+  border-radius: 10px;
   margin: 0px auto;
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 60px;
-  background-color: #fcfcfc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .breadcrumb {
@@ -27,7 +24,7 @@
 }
 
 .title {
-  font-size: 35px;
+  font-size: 45px;
 }
 
 .action {
@@ -53,7 +50,7 @@
 .imageSliderWrapper img {
   margin: 0 auto;
   width: auto;
-  height: 220px;
+  height: 250px;
 }
 
 :global(.slick-prev:before),
