@@ -3,29 +3,25 @@ package com.project.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.client.RestTemplate;
+
+import java.time.Duration;
 
 /** api 환경 설정 클래스 */
 @Configuration
 @PropertySource("classpath:config.properties")
 public class ApiConfig {
-    @Value("${data_seoul_api_key}")
-    private String dataSeoulApiKey;
-
     @Bean
-    public WebClient webClient() {
-        return WebClient.builder()
-                .baseUrl("http://openapi.seoul.go.kr:8088/") // 초기 url 지정
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder
+                .setConnectTimeout(Duration.ofSeconds(5))
+                .setReadTimeout(Duration.ofSeconds(5))
                 .build();
-    }
-
-    @Bean
-    public String getApiKey() {
-        return dataSeoulApiKey;
     }
 
     @Bean

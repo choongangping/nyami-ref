@@ -1,4 +1,10 @@
 spring:
+  # 애플리케이션 이름 및 설정 파일 로드
+  application:
+    name: project-nyami # 애플리케이션 이름
+  config:
+    import: "optional:file:application.secret.yml" # 추가 설정 파일 로드
+
   # JPA 및 Hibernate 설정
   jpa:
     hibernate:
@@ -7,7 +13,6 @@ spring:
       hibernate:
         format_sql: "true" # 출력되는 SQL 포맷팅 활성화
     show-sql: "true" # 실행된 SQL 쿼리 로깅 활성화
-
 
   # 데이터 소스 및 HikariCP(DB 연결 풀) 설정
   datasource:
@@ -18,26 +23,6 @@ spring:
     hikari:
       connection-test-query: SELECT 1 # 커넥션 유효성 검사용 쿼리
 
-  # 애플리케이션 이름 및 설정 파일 로드
-  application:
-    name: project-nyami # 애플리케이션 이름
-  config:
-    import: optional:file:./application.secret.yml # 추가 설정 파일 로드
-
-# 로그 설정
-logging:
-  level:
-    org.hibernate.SQL: DEBUG # SQL 쿼리 바인딩 값 확인
-    org.hibernate.type.descriptor.sql: TRACE # SQL 쿼리 바인딩 값 확인
-    com:
-#      project: DEBUG # 프로젝트 로깅 레벨 (디버깅 필요 시 주석 해제)
-    org:
-      springframework:
-#        jdbc: DEBUG # Spring JDBC 로깅 레벨  (디버깅 필요 시 주석 해제)
-#        security: DEBUG # Spring Security 로깅 레벨  (디버깅 필요 시 주석 해제)
-  file:
-    name: ${LOG_PATH} # 로그 파일 저장 위치
-
 # 서버 설정
 server:
   port: "8090" # 서버 포트
@@ -47,3 +32,17 @@ server:
     include-message: always
     whitelabel:
       enabled: false
+
+# 로그 설정
+logging:
+  level:
+    org.hibernate.SQL: DEBUG # SQL 쿼리 바인딩 값 확인
+    org.hibernate.type.descriptor.sql: TRACE # SQL 쿼리 바인딩 값 확인
+#    com:
+#      project: DEBUG # 프로젝트 로깅 레벨 (디버깅 필요 시 주석 해제)
+#    org:
+#      springframework:
+#        jdbc: DEBUG # Spring JDBC 로깅 레벨  (디버깅 필요 시 주석 해제)
+#        security: DEBUG # Spring Security 로깅 레벨  (디버깅 필요 시 주석 해제)
+  file:
+    name: ${LOG_PATH} # 로그 파일 저장 위치
