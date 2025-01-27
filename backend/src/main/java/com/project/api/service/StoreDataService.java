@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Data
@@ -17,6 +18,10 @@ import java.time.LocalDateTime;
 @Slf4j
 public class StoreDataService {
     private final StoreDataRepository storeDataRepository;
+
+    public void saveAll(List<StoreData> storeDataList) {
+        storeDataRepository.saveAll(storeDataList);
+    }
 
     public void saveData(JsonNode rows) {
         for (JsonNode row : rows) {
