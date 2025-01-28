@@ -42,6 +42,24 @@ const BasicDropdown = ({
     };
   }, [isOpen, onClose, buttonRef, dropdownRef]);
 
+  // 드롭다운 패널 위치 조정
+  useEffect(() => {
+    if (isOpen && buttonRef.current && dropdownRef.current) {
+      const buttonRect = buttonRef.current.getBoundingClientRect();
+      const dropdown = dropdownRef.current;
+
+      // 버튼 위치를 기준으로 드롭다운 위치 조정
+      const top = buttonRect.bottom + window.scrollY;
+      const left = buttonRect.left;
+
+      console.log(top);
+      console.log(left);
+
+      dropdown.style.top = `${top + 10}px`;
+      dropdown.style.left = left < 1000 ? `${left}px` : '-100px';
+    }
+  }, [isOpen, buttonRef, dropdownRef]);
+
   if (!isOpen) return null;
 
   return (

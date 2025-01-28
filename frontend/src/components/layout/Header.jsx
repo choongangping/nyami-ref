@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './Header.module.css';
 import Logo from '../../assets/images/logo.png';
@@ -8,13 +8,23 @@ import { GoBellFill } from 'react-icons/go';
 import { RxHamburgerMenu } from 'react-icons/rx';
 
 const Header = () => {
-  const [user, setUser] = useState(false); // 로그인 유저 상태
+  const navigator = useNavigate();
+  const [user, setUser] = useState(null); // 로그인 유저 상태
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴 드롭다운 열림 상태
   const menuDropdownRef = useRef(null); // 메뉴 드롭다운 참조
   const menuButtonRef = useRef(null); // 메뉴 버튼 참조
   const [isAlertOpen, setIsAlertOpen] = useState(false); // 알림 드롭다운 열림 상태
   const alertDropdownRef = useRef(null); // 알림 드롭다운 참조
   const alertButtonRef = useRef(null); // 알림 버튼 참조
+
+  useEffect(() => {
+    const handleUser = () => {
+      // 로컬 스토리지에서 로그인 유저 정보 가져오기
+      const user = localStorage.getItem('user');
+      setUser(user);
+    };
+    handleUser();
+  });
 
   // 알림 내용
   const alertContent = [
@@ -37,7 +47,7 @@ const Header = () => {
   ];
 
   // 미인증 사용자 메뉴
-  const loggedOutLinks = [
+  const nonLoggedInLinks = [
     { path: '/login', label: '로그인' },
     { path: '/signup', label: '회원가입' },
   ];
@@ -69,84 +79,77 @@ const Header = () => {
       <Link to="/">
         <img className={styles.mainLogo} src={Logo} alt="로고 이미지" />
       </Link>
-      <div>
-        {user ? (
-          // 로그인 메뉴
-          <div className={styles.buttonContainer}>
-            <div className={styles.containerWrapper}>
-              {/* 아이콘 */}
-              <GoBellFill
-                className={styles.headerIcon}
-                ref={alertButtonRef}
-                onClick={handleAlertDropdown}
-              />
-              {/* 알림 드롭다운 */}
-              <BasicDropdown
-                isOpen={isAlertOpen}
-                onClose={closeAlertDropdown}
-                dropdownRef={alertDropdownRef}
-                buttonRef={alertButtonRef}
-              >
-                {alertContent.map((alert) => {
-                  return (
-                    <Link key={alert.id} to={`/${alert.id}`}>
-                      {alert.content}
-                    </Link>
-                  );
-                })}
-              </BasicDropdown>
-            </div>
-
-            <div className={styles.containerWrapper}>
-              <RxHamburgerMenu
-                className={styles.headerIcon}
-                ref={menuButtonRef}
-                onClick={handleMenuDropdown}
-              />
-              {/* 메뉴 드롭다운 */}
-              <BasicDropdown
-                isOpen={isMenuOpen}
-                onClose={closeMenuDropdown}
-                dropdownRef={menuDropdownRef}
-                buttonRef={menuButtonRef}
-              >
-                {loggedInLinks.map((link) => {
-                  return (
-                    <Link
-                      key={link.label}
-                      to={link.path}
-                      onClick={(e) => {
-                        if (link.label === '로그아웃') {
-                          e.preventDefault();
-                          setUser(false);
-                        }
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-              </BasicDropdown>
-            </div>
-          </div>
-        ) : (
-          // 로그아웃 메뉴
-          loggedOutLinks.map((link) => (
-            <Link
-              to={link.path}
-              key={link.label}
-              onClick={(e) => {
-                if (link.label === '로그인') {
-                  e.preventDefault();
-                  setUser(true);
-                }
-              }}
+      {user ? (
+        // 로그인 메뉴
+        <div className={styles.menuContainer}>
+          <div className={styles.containerWrapper}>
+            {/* 아이콘 */}
+            <GoBellFill
+              className={styles.headerIcon}
+              ref={alertButtonRef}
+              onClick={handleAlertDropdown}
+            />
+            {/* 알림 드롭다운 */}
+            <BasicDropdown
+              isOpen={isAlertOpen}
+              onClose={closeAlertDropdown}
+              dropdownRef={alertDropdownRef}
+              buttonRef={alertButtonRef}
             >
+              {alertContent.map((alert) => {
+                return (
+                  <Link key={alert.id} to={`/${alert.id}`}>
+                    {alert.content}
+                  </Link>
+                );
+              })}
+            </BasicDropdown>
+          </div>
+
+          <div className={styles.containerWrapper}>
+            <RxHamburgerMenu
+              className={styles.headerIcon}
+              ref={menuButtonRef}
+              onClick={handleMenuDropdown}
+            />
+            {/* 메뉴 드롭다운 */}
+            <BasicDropdown
+              isOpen={isMenuOpen}
+              onClose={closeMenuDropdown}
+              dropdownRef={menuDropdownRef}
+              buttonRef={menuButtonRef}
+            >
+              {loggedInLinks.map((link) => {
+                return (
+                  <Link
+                    key={link.label}
+                    to={link.path}
+                    onClick={(e) => {
+                      if (link.label === '로그아웃') {
+                        e.preventDefault();
+                        localStorage.removeItem('user');
+                        alert('로그아웃');
+                        navigator('/');
+                      }
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </BasicDropdown>
+          </div>
+        </div>
+      ) : (
+        // 비로그인 메뉴
+        <div className={styles.menuContainer}>
+          {nonLoggedInLinks.map((link) => (
+            <Link to={link.path} key={link.label}>
               {link.label}
             </Link>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </header>
   );
 };
