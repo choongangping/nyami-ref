@@ -1,9 +1,9 @@
-package com.project.api.service;
+package com.project.external.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.project.api.dto.StoreDataRequestDTO;
-import com.project.api.entity.StoreData;
-import com.project.api.repository.StoreDataRepository;
+import com.project.external.dto.StoreDataRequestDTO;
+import com.project.external.entity.StoreData;
+import com.project.external.repository.StoreDataRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

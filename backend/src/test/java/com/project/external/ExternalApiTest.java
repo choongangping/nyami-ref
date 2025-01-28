@@ -1,14 +1,12 @@
-package com.project.util;
+package com.project.external;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.api.dto.StoreDataRequestDTO;
-import com.project.api.entity.StoreData;
-import com.project.api.repository.StoreDataRepository;
-import com.project.api.service.CrtfcUpsoService;
-import com.project.api.service.StoreDataService;
-import com.project.api.util.ParsingJsonHelper;
+import com.project.external.entity.StoreData;
+import com.project.external.service.CrtfcUpsoService;
+import com.project.external.service.StoreDataService;
+import com.project.external.util.ParsingJsonHelper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

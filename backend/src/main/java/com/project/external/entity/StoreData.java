@@ -1,4 +1,4 @@
-package com.project.api.entity;
+package com.project.external.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
