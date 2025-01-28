@@ -9,6 +9,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update # 스키마 자동 업데이트
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy # 카멜 표기법 자동변환
     properties:
       hibernate:
         format_sql: "true" # 출력되는 SQL 포맷팅 활성화
