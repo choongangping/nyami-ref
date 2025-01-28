@@ -1,6 +1,6 @@
-package com.project.api.repository;
+package com.project.external.repository;
 
-import com.project.api.entity.StoreData;
+import com.project.external.entity.StoreData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

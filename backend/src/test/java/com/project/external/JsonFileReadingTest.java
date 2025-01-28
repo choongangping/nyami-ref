@@ -1,4 +1,4 @@
-package com.project.util;
+package com.project.external;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;

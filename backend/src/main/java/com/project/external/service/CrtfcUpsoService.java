@@ -1,8 +1,8 @@
-package com.project.api.service;
+package com.project.external.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.project.api.entity.CrtfcUpso;
-import com.project.api.repository.CrtfcUpsoRepository;
+import com.project.external.entity.CrtfcUpso;
+import com.project.external.repository.CrtfcUpsoRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

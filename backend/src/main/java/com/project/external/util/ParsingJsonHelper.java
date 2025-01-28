@@ -1,7 +1,7 @@
-package com.project.api.util;
+package com.project.external.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.project.api.dto.StoreDataRequestDTO;
+import com.project.external.dto.StoreDataRequestDTO;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

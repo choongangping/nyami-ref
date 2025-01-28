@@ -1,4 +1,4 @@
-package com.project.api.dto;
+package com.project.external.dto;
 
 import lombok.Data;
 
