@@ -48,7 +48,7 @@ public class StoreServiceTest {
     @DisplayName("모든 가게 목록을 조회합니다.")
     void getStores() {
         // When
-        List<Store> stores = storeService.findStores(mockStores, null, null, null, null);
+        List<Store> stores = storeService.findStores(mockStores, null, null, null, null, 1);
 
         // Then
         assertNotNull(stores);
@@ -61,7 +61,7 @@ public class StoreServiceTest {
     @DisplayName("지역이 \"강남구\"인 가게 목록을 조회합니다.")
     void getStoresByLocal() {
         // When
-        List<Store> stores = storeService.findStores(mockStores, "강남구", null, null, null);
+        List<Store> stores = storeService.findStores(mockStores, "강남구", null, null, null, 1);
 
         // Then
         assertNotNull(stores);
@@ -75,7 +75,7 @@ public class StoreServiceTest {
     @DisplayName("지역이 \"강남구\"이고 테마가 \"혼밥하기 좋은\"인 가게 목록을 조회합니다.")
     void getStoresByLocalAndTheme() {
         // When
-        List<Store> stores = storeService.findStores(mockStores, "강남구", null, "혼밥하기 좋은", null);
+        List<Store> stores = storeService.findStores(mockStores, "강남구", null, "혼밥하기 좋은", null, 1);
 
         // Then
         assertNotNull(stores);
@@ -89,7 +89,7 @@ public class StoreServiceTest {
     @DisplayName("업종이 \"한식\"인 가게 목록을 조회합니다.")
     void getStoresByFoodCategory() {
         // When
-        List<Store> stores = storeService.findStores(mockStores, null, "한식", null, null);
+        List<Store> stores = storeService.findStores(mockStores, null, "한식", null, null, 1);
 
         // Then
         assertNotNull(stores);
@@ -103,7 +103,7 @@ public class StoreServiceTest {
     @DisplayName("잘못된 데이터를 전달한 경우의 가게 목록을 조회합니다.")
     void getStoresWithWrongData() {
         // When
-        List<Store> stores = storeService.findStores(mockStores, "test", "test", "test", "test");
+        List<Store> stores = storeService.findStores(mockStores, "test", "test", "test", "test", 1);
 
         // Then
         assertNotNull(stores);
