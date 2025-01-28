@@ -27,6 +27,7 @@ public class StoreServiceTest {
 
     @BeforeEach
     void setUp() {
+        // Given
         Local gangnam = new Local(1, "강남구");
         Local seocho = new Local(2, "서초구");
         FoodCategory korean = new FoodCategory(1, "한식");
@@ -34,12 +35,11 @@ public class StoreServiceTest {
         Theme soloTheme = new Theme(1, "혼밥하기 좋은");
         Theme dateTheme = new Theme(2, "데이트 코스");
 
-        // Given
         mockStores = Arrays.asList(
-                new Store(1, gangnam, korean, dateTheme, "Store A", "Address A", "Detail Address A", "010-1234-5678", "image1.png", new BigDecimal("100.000"), new BigDecimal("200.000"), "Description A", 100),
-                new Store(2, gangnam, chinese, soloTheme, "Store B", "Address B", "Detail Address B", "010-8765-4321", "image2.png", new BigDecimal("300.000"), new BigDecimal("400.000"), "Description B", 300),
-                new Store(3, seocho, chinese, dateTheme, "Store C", "Address C", "Detail Address C", "010-5678-1234", "image3.png", new BigDecimal("500.000"), new BigDecimal("600.000"), "Description C", 400),
-                new Store(4, seocho, korean, soloTheme, "Store D", "Address D", "Detail Address D", "010-4321-8765", "image4.png", new BigDecimal("700.000"), new BigDecimal("800.000"), "Description D", 200)
+            new Store(1, gangnam, korean, dateTheme, "Store A", "Address A", "Detail Address A", "010-1234-5678", "image1.png", new BigDecimal("100.000"), new BigDecimal("200.000"), "Description A", 100),
+            new Store(2, gangnam, chinese, soloTheme, "Store B", "Address B", "Detail Address B", "010-8765-4321", "image2.png", new BigDecimal("300.000"), new BigDecimal("400.000"), "Description B", 300),
+            new Store(3, seocho, chinese, dateTheme, "Store C", "Address C", "Detail Address C", "010-5678-1234", "image3.png", new BigDecimal("500.000"), new BigDecimal("600.000"), "Description C", 400),
+            new Store(4, seocho, korean, soloTheme, "Store D", "Address D", "Detail Address D", "010-4321-8765", "image4.png", new BigDecimal("700.000"), new BigDecimal("800.000"), "Description D", 200)
         );
     }
 
@@ -48,7 +48,7 @@ public class StoreServiceTest {
     @DisplayName("모든 가게 목록을 조회합니다.")
     void getStores() {
         // When
-        List<Store> stores = storeService.findStores(mockStores, null, null, null, null, 1);
+        List<Store> stores = storeService.findAll(mockStores, null, null, null, null, 1);
 
         // Then
         assertNotNull(stores);
@@ -61,7 +61,7 @@ public class StoreServiceTest {
     @DisplayName("지역이 \"강남구\"인 가게 목록을 조회합니다.")
     void getStoresByLocal() {
         // When
-        List<Store> stores = storeService.findStores(mockStores, "강남구", null, null, null, 1);
+        List<Store> stores = storeService.findAll(mockStores, "강남구", null, null, null, 1);
 
         // Then
         assertNotNull(stores);
@@ -75,7 +75,7 @@ public class StoreServiceTest {
     @DisplayName("지역이 \"강남구\"이고 테마가 \"혼밥하기 좋은\"인 가게 목록을 조회합니다.")
     void getStoresByLocalAndTheme() {
         // When
-        List<Store> stores = storeService.findStores(mockStores, "강남구", null, "혼밥하기 좋은", null, 1);
+        List<Store> stores = storeService.findAll(mockStores, "강남구", null, "혼밥하기 좋은", null, 1);
 
         // Then
         assertNotNull(stores);
@@ -89,7 +89,7 @@ public class StoreServiceTest {
     @DisplayName("업종이 \"한식\"인 가게 목록을 조회합니다.")
     void getStoresByFoodCategory() {
         // When
-        List<Store> stores = storeService.findStores(mockStores, null, "한식", null, null, 1);
+        List<Store> stores = storeService.findAll(mockStores, null, "한식", null, null, 1);
 
         // Then
         assertNotNull(stores);
@@ -103,7 +103,7 @@ public class StoreServiceTest {
     @DisplayName("잘못된 데이터를 전달한 경우의 가게 목록을 조회합니다.")
     void getStoresWithWrongData() {
         // When
-        List<Store> stores = storeService.findStores(mockStores, "test", "test", "test", "test", 1);
+        List<Store> stores = storeService.findAll(mockStores, "test", "test", "test", "test", 1);
 
         // Then
         assertNotNull(stores);
