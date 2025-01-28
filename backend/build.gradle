@@ -31,6 +31,9 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok' // 컴파일 시 Lombok 지원
 	annotationProcessor 'org.projectlombok:lombok' // Lombok 어노테이션 처리
 
+	// swagger
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0' // API 자동 문서화를 위한 swagger
+
 	// 테스트 의존성
 	testImplementation 'org.springframework.boot:spring-boot-starter-test' // Spring Boot 테스트
 	testImplementation 'org.springframework.security:spring-security-test' // Spring Security 테스트
