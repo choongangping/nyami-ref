@@ -1,13 +1,18 @@
 package com.project.store.repository;
 
+import com.project.store.entity.QStore;
 import com.project.store.entity.Store;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-import static com.project.store.entity.QStore.store;
+import java.util.Optional;
 
 // Querydsl 인터페이스의 구현체 (구현체에 동적 쿼리 작성)
 @Repository
@@ -16,17 +21,30 @@ public class StoreRepositoryCustomImpl implements StoreRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Store> findStores(String local, String foodCategory, String theme, String sortBy, int page, int size) {
-        return queryFactory
-                .selectFrom(store) // Store 테이블을 select
-                .where(
-                        local != null ? store.local.local.eq(local) : null,
-                        foodCategory != null ? store.foodCategory.foodCategory.eq(foodCategory) : null,
-                        theme != null ? store.theme.theme.eq(theme) : null
-                ) // 필터링 조건의 null 여부에 따라 쿼리를 동적으로 추가
-                .orderBy(store.views.asc()) // 조회수순 정렬 (수정 필요)
-                .offset((long) (page - 1) * size) // 값만큼 데이터를 건너뜀
-                .limit(size) // size개의 데이터 조회
+    public Page<Store> findStores(String local, String foodCategory, String theme, String sortBy, Pageable pageable) {
+        QStore store = QStore.store;
+
+        BooleanBuilder whereClause = new BooleanBuilder();
+        if (local != null) whereClause.and(store.local.local.eq(local));
+        if (foodCategory != null) whereClause.and(store.foodCategory.foodCategory.eq(foodCategory));
+        if (theme != null) whereClause.and(store.theme.theme.eq(theme));
+
+        List<Store> result = queryFactory
+                .selectFrom(store)
+                .where(whereClause)
+                .orderBy(pageable.getSort().isSorted() ? store.views.desc() : store.views.asc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
                 .fetch();
+
+        JPAQuery<Long> countQuery = queryFactory
+                .select(store.count())  // 총 개수 조회
+                .from(store)
+                .where(whereClause);
+
+        long total = Optional.ofNullable(countQuery.fetchOne())
+                .orElse(0L); // 총 개수 조회
+
+        return new PageImpl<>(result, pageable, total);
     }
 }
