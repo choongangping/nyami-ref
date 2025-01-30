@@ -4,30 +4,38 @@ import com.project.store.entity.FoodCategory;
 import com.project.store.entity.Local;
 import com.project.store.entity.Store;
 import com.project.store.entity.Theme;
+import com.project.store.repository.StoreRepository;
 import com.project.store.service.StoreService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.*;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class StoreServiceTest {
     @InjectMocks
     private StoreService storeService;
 
+    @Mock
+    private StoreRepository storeRepository;
+
     private List<Store> mockStores;
 
     @BeforeEach
     void setUp() {
-        // Given
         Local gangnam = new Local(1, "강남구");
         Local seocho = new Local(2, "서초구");
         FoodCategory korean = new FoodCategory(1, "한식");
@@ -47,66 +55,116 @@ public class StoreServiceTest {
     @Test
     @DisplayName("모든 가게 목록을 조회합니다.")
     void getStores() {
+        // Given
+        Pageable pageable = PageRequest.of(0, 6, Sort.by("views").descending());
+
+        List<Store> filteredStores = mockStores.stream()
+                .toList();
+
+        when(storeRepository.findStores(any(), any(), any(), any(), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
+
         // When
-        List<Store> stores = storeService.findAll(mockStores, null, null, null, null, 1);
+        Page<Store> stores = storeService.findStores(null, null, null, null, 1);
 
         // Then
-        assertNotNull(stores);
-        assertEquals(4, stores.size());
-        assertEquals("Store C", stores.get(0).getName());
+        assertNotNull(stores.getContent());
+        assertEquals(4, stores.getNumberOfElements());
     }
 
     // 지역 필터 적용
     @Test
     @DisplayName("지역이 \"강남구\"인 가게 목록을 조회합니다.")
     void getStoresByLocal() {
+        // Given
+        Pageable pageable = PageRequest.of(0, 6, Sort.by("views").descending());
+
+        List<Store> filteredStores = mockStores.stream()
+                .filter(store -> store.getLocal().getLocal().equals("강남구"))
+                .toList();
+
+        when(storeRepository.findStores(eq("강남구"), any(), any(), any(), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
+
         // When
-        List<Store> stores = storeService.findAll(mockStores, "강남구", null, null, null, 1);
+        Page<Store> stores = storeService.findStores("강남구", null, null, null, 1);
 
         // Then
-        assertNotNull(stores);
-        assertEquals(2, stores.size());
-        assertEquals("강남구", stores.get(0).getLocal().getLocal());
-        assertEquals("강남구", stores.get(1).getLocal().getLocal());
+        assertNotNull(stores.getContent());
+        assertEquals(2, stores.getNumberOfElements());
+        assertEquals("강남구", stores.getContent().get(0).getLocal().getLocal());
+        assertEquals("강남구", stores.getContent().get(1).getLocal().getLocal());
     }
 
     // 지역 + 테마 필터 적용
     @Test
     @DisplayName("지역이 \"강남구\"이고 테마가 \"혼밥하기 좋은\"인 가게 목록을 조회합니다.")
     void getStoresByLocalAndTheme() {
+        // Given
+        Pageable pageable = PageRequest.of(0, 6, Sort.by("views").descending());
+
+        List<Store> filteredStores = mockStores.stream()
+                .filter(store -> store.getLocal().getLocal().equals("강남구") && store.getTheme().getTheme().equals("혼밥하기 좋은"))
+                .toList();
+
+        when(storeRepository.findStores(eq("강남구"), any(), eq("혼밥하기 좋은"), any(), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
+
         // When
-        List<Store> stores = storeService.findAll(mockStores, "강남구", null, "혼밥하기 좋은", null, 1);
+        Page<Store> stores = storeService.findStores("강남구", null, "혼밥하기 좋은", null, 1);
 
         // Then
-        assertNotNull(stores);
-        assertEquals(1, stores.size());
-        assertEquals("강남구", stores.get(0).getLocal().getLocal());
-        assertEquals("혼밥하기 좋은", stores.get(0).getTheme().getTheme());
+        assertNotNull(stores.getContent());
+        assertEquals(1, stores.getNumberOfElements());
+        assertEquals("강남구", stores.getContent().get(0).getLocal().getLocal());
+        assertEquals("혼밥하기 좋은", stores.getContent().get(0).getTheme().getTheme());
     }
 
     // 업종 필터 적용
     @Test
     @DisplayName("업종이 \"한식\"인 가게 목록을 조회합니다.")
     void getStoresByFoodCategory() {
+        // Given
+        Pageable pageable = PageRequest.of(0, 6, Sort.by("views").descending());
+
+        List<Store> filteredStores = mockStores.stream()
+                .filter(store -> store.getFoodCategory().getFoodCategory().equals("한식"))
+                .toList();
+
+        when(storeRepository.findStores(any(), eq("한식"), any(), any(), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
+
         // When
-        List<Store> stores = storeService.findAll(mockStores, null, "한식", null, null, 1);
+        Page<Store> stores = storeService.findStores(null, "한식", null, null, 1);
 
         // Then
-        assertNotNull(stores);
-        assertEquals(2, stores.size());
-        assertEquals("한식", stores.get(0).getFoodCategory().getFoodCategory());
-        assertEquals("한식", stores.get(1).getFoodCategory().getFoodCategory());
+        assertNotNull(stores.getContent());
+        assertEquals(2, stores.getNumberOfElements());
+        assertEquals("한식", stores.getContent().get(0).getFoodCategory().getFoodCategory());
+        assertEquals("한식", stores.getContent().get(1).getFoodCategory().getFoodCategory());
     }
 
     // 필터 조건 미적용 (잘못된 데이터)
     @Test
     @DisplayName("잘못된 데이터를 전달한 경우의 가게 목록을 조회합니다.")
     void getStoresWithWrongData() {
+        // Given
+        Pageable pageable = PageRequest.of(0, 6, Sort.by("views").descending());
+
+        List<Store> filteredStores = mockStores.stream()
+                .filter(store -> store.getLocal().getLocal().equals("test") &&
+                                 store.getFoodCategory().getFoodCategory().equals("test") &&
+                                 store.getTheme().getTheme().equals("test"))
+                .toList();
+
+        when(storeRepository.findStores(any(), any(), any(), any(), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
+
         // When
-        List<Store> stores = storeService.findAll(mockStores, "test", "test", "test", "test", 1);
+        Page<Store> stores = storeService.findStores("test", "test", "test", "test", 1);
 
         // Then
-        assertNotNull(stores);
+        assertNotNull(stores.getContent());
         assertTrue(stores.isEmpty());
     }
 }
