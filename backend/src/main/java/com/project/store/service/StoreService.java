@@ -20,16 +20,28 @@ public class StoreService {
     int size = 6;
 
     public Page<StoreResponse> findStores(StoreSearchRequest request) {
-        Pageable pageable = PageRequest.of(request.getPage() - 1, 6, Sort.by("views").descending());
-        Page<Store> stores = storeRepository.findStores(
-                request.getLocal(),
-                request.getFoodCategory(),
-                request.getTheme(),
-                request.getSortBy(),
-                pageable
-        );
+        if (request.getPage() < 1) {
+            throw new IllegalArgumentException("페이지 번호는 1 이상이어야 합니다.");
+        }
 
-        List<StoreResponse> responses = StoreMapper.STORE_MAPPER.toDto(stores.getContent());
-        return new PageImpl<>(responses, pageable, stores.getTotalElements());
+        try {
+            Pageable pageable = PageRequest.of(request.getPage() - 1, size, Sort.by("views").descending());
+            Page<Store> stores = storeRepository.findStores(
+                    request.getLocal(),
+                    request.getFoodCategory(),
+                    request.getTheme(),
+                    request.getSortBy(),
+                    pageable
+            );
+            List<StoreResponse> responses = StoreMapper.STORE_MAPPER.toDto(stores.getContent());
+
+            return new PageImpl<>(responses, pageable, stores.getTotalElements());
+        } catch (IllegalArgumentException e) {
+            log.error("잘못된 파라미터가 입력되었습니다: {}", request, e);
+            throw e;
+        } catch (Exception e) {
+            log.error("가게 조회 중 예외가 발생하였습니다:", e);
+            throw new RuntimeException("매장 검색 중 오류가 발생했습니다.", e);
+        }
     }
 }

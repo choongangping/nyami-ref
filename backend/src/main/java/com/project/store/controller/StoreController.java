@@ -41,20 +41,17 @@ public class StoreController {
             @ApiResponse(
                 responseCode = "400",
                 description = "잘못된 요청 전송",
-                content = @Content(mediaType = "application/json", schema = @Schema(type = "string", example = "잘못된 요청을 전송하였습니다."))
+                content = @Content(mediaType = "application/json", schema = @Schema(type = "string", example = "입력값이 잘못되었습니다."))
             ),
             @ApiResponse(
                 responseCode = "500",
                 description = "가게 목록 조회 실패",
-                content = @Content(mediaType = "application/json", schema = @Schema(type = "string", example = "서버에 문제가 발생하였습니다."))
+                content = @Content(mediaType = "application/json", schema = @Schema(type = "string", example = "서버 내부 오류가 발생했습니다."))
             )
         }
     )
     @GetMapping("/stores")
     public ResponseEntity<?> getStores(@Valid @ModelAttribute StoreSearchRequest request) {
-        // if (request.getPage() < 1) {
-        //     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("잘못된 요청을 전송하였습니다.");
-        // }
         Page<StoreResponse> stores = storeService.findStores(request);
 
         return ResponseEntity.ok().body(stores);

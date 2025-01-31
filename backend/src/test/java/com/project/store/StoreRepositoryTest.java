@@ -1,6 +1,6 @@
 package com.project.store;
 
-import com.project.config.QuerydslConfig;
+import com.project.common.config.QuerydslConfig;
 import com.project.store.entity.Store;
 import com.project.store.repository.StoreRepository;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,4 @@
-package com.project.config;
+package com.project.common.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;

@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Min;
 import lombok.Data;
 
 @Data
-@Schema(description = "가게 등록 요청 Dto")
+@Schema(description = "가게 검색 Dto")
 public class StoreSearchRequest {
     @Schema(example = "강남구")
     private String local;
