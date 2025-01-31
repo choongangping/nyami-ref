@@ -1,9 +1,9 @@
 package com.project.store.service;
 
-import com.project.store.mapper.StoreMapper;
 import com.project.store.dto.StoreResponse;
 import com.project.store.dto.StoreSearchRequest;
 import com.project.store.entity.Store;
+import com.project.store.mapper.StoreMapper;
 import com.project.store.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +20,6 @@ public class StoreService {
     int size = 6;
 
     public Page<StoreResponse> findStores(StoreSearchRequest request) {
-        if (request.getPage() < 1) {
-            throw new IllegalArgumentException("페이지 번호는 1 이상이어야 합니다.");
-        }
-
         try {
             Pageable pageable = PageRequest.of(request.getPage() - 1, size, Sort.by("views").descending());
             Page<Store> stores = storeRepository.findStores(
@@ -37,7 +33,8 @@ public class StoreService {
 
             return new PageImpl<>(responses, pageable, stores.getTotalElements());
         } catch (IllegalArgumentException e) {
-            log.error("잘못된 파라미터가 입력되었습니다: {}", request, e);
+            log.error("잘못된 파라미터 입력: local={}, foodCategory={}, theme={}, sortBy={}, page={}",
+                request.getLocal(), request.getFoodCategory(), request.getTheme(), request.getSortBy(), request.getPage(), e);
             throw e;
         } catch (Exception e) {
             log.error("가게 조회 중 예외가 발생하였습니다:", e);
