@@ -12,7 +12,7 @@ import React, { useEffect, useState } from 'react';
  * - `loading`: 데이터 로딩 상태(`true` 또는 `false`)
  */
 function useFetch(endpoint, method = 'GET', request = {}) {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const stringifiedRequest = JSON.stringify(request); // 전송 객체를 문자열 형식으로 변환
