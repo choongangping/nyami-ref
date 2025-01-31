@@ -3,11 +3,13 @@ package com.project.store.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Schema(description = "가게 응답 Dto")
 public class StoreResponse {
     private int id;
@@ -41,5 +43,5 @@ public class StoreResponse {
 
     private String description;
 
-    private int views = 0;
+    private int views;
 }

@@ -1,5 +1,7 @@
 package com.project.store;
 
+import com.project.store.dto.StoreResponse;
+import com.project.store.dto.StoreSearchRequest;
 import com.project.store.entity.FoodCategory;
 import com.project.store.entity.Local;
 import com.project.store.entity.Store;
@@ -20,8 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -61,11 +62,23 @@ public class StoreServiceTest {
         List<Store> filteredStores = mockStores.stream()
                 .toList();
 
-        when(storeRepository.findStores(any(), any(), any(), any(), any(Pageable.class)))
-                .thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
+        StoreSearchRequest request = new StoreSearchRequest();
+        request.setLocal(null);
+        request.setFoodCategory(null);
+        request.setTheme(null);
+        request.setSortBy(null);
+        request.setPage(1);
+
+        when(storeRepository.findStores(
+                argThat(local -> local == null),
+                argThat(category -> category == null),
+                argThat(theme -> theme == null),
+                argThat(sortBy -> sortBy == null),
+                any(Pageable.class)
+        )).thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
 
         // When
-        Page<Store> stores = storeService.findStores(null, null, null, null, 1);
+        Page<StoreResponse> stores = storeService.findStores(request);
 
         // Then
         assertNotNull(stores.getContent());
@@ -83,17 +96,29 @@ public class StoreServiceTest {
                 .filter(store -> store.getLocal().getLocal().equals("강남구"))
                 .toList();
 
-        when(storeRepository.findStores(eq("강남구"), any(), any(), any(), any(Pageable.class)))
-                .thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
+        StoreSearchRequest request = new StoreSearchRequest();
+        request.setLocal("강남구");
+        request.setFoodCategory(null);
+        request.setTheme(null);
+        request.setSortBy(null);
+        request.setPage(1);
+
+        when(storeRepository.findStores(
+                argThat(local -> local.equals("강남구")),
+                argThat(category -> category == null),
+                argThat(theme -> theme == null),
+                argThat(sortBy -> sortBy == null),
+                any(Pageable.class)
+        )).thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
 
         // When
-        Page<Store> stores = storeService.findStores("강남구", null, null, null, 1);
+        Page<StoreResponse> stores = storeService.findStores(request);
 
         // Then
         assertNotNull(stores.getContent());
         assertEquals(2, stores.getNumberOfElements());
-        assertEquals("강남구", stores.getContent().get(0).getLocal().getLocal());
-        assertEquals("강남구", stores.getContent().get(1).getLocal().getLocal());
+        assertEquals("강남구", stores.getContent().get(0).getLocal());
+        assertEquals("강남구", stores.getContent().get(1).getLocal());
     }
 
     // 지역 + 테마 필터 적용
@@ -107,17 +132,29 @@ public class StoreServiceTest {
                 .filter(store -> store.getLocal().getLocal().equals("강남구") && store.getTheme().getTheme().equals("혼밥하기 좋은"))
                 .toList();
 
-        when(storeRepository.findStores(eq("강남구"), any(), eq("혼밥하기 좋은"), any(), any(Pageable.class)))
-                .thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
+        StoreSearchRequest request = new StoreSearchRequest();
+        request.setLocal("강남구");
+        request.setFoodCategory(null);
+        request.setTheme("혼밥하기 좋은");
+        request.setSortBy(null);
+        request.setPage(1);
+
+        when(storeRepository.findStores(
+                argThat(local -> local.equals("강남구")),
+                argThat(category -> category == null),
+                argThat(theme -> theme.equals("혼밥하기 좋은")),
+                argThat(sortBy -> sortBy == null),
+                any(Pageable.class)
+        )).thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
 
         // When
-        Page<Store> stores = storeService.findStores("강남구", null, "혼밥하기 좋은", null, 1);
+        Page<StoreResponse> stores = storeService.findStores(request);
 
         // Then
         assertNotNull(stores.getContent());
         assertEquals(1, stores.getNumberOfElements());
-        assertEquals("강남구", stores.getContent().get(0).getLocal().getLocal());
-        assertEquals("혼밥하기 좋은", stores.getContent().get(0).getTheme().getTheme());
+        assertEquals("강남구", stores.getContent().get(0).getLocal());
+        assertEquals("혼밥하기 좋은", stores.getContent().get(0).getTheme());
     }
 
     // 업종 필터 적용
@@ -131,17 +168,29 @@ public class StoreServiceTest {
                 .filter(store -> store.getFoodCategory().getFoodCategory().equals("한식"))
                 .toList();
 
-        when(storeRepository.findStores(any(), eq("한식"), any(), any(), any(Pageable.class)))
-                .thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
+        StoreSearchRequest request = new StoreSearchRequest();
+        request.setLocal(null);
+        request.setFoodCategory("한식");
+        request.setTheme(null);
+        request.setSortBy(null);
+        request.setPage(1);
+
+        when(storeRepository.findStores(
+                argThat(local -> local == null),
+                argThat(category -> category.equals("한식")),
+                argThat(theme -> theme == null),
+                argThat(sortBy -> sortBy == null),
+                any(Pageable.class)
+        )).thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
 
         // When
-        Page<Store> stores = storeService.findStores(null, "한식", null, null, 1);
+        Page<StoreResponse> stores = storeService.findStores(request);
 
         // Then
         assertNotNull(stores.getContent());
         assertEquals(2, stores.getNumberOfElements());
-        assertEquals("한식", stores.getContent().get(0).getFoodCategory().getFoodCategory());
-        assertEquals("한식", stores.getContent().get(1).getFoodCategory().getFoodCategory());
+        assertEquals("한식", stores.getContent().get(0).getFoodCategory());
+        assertEquals("한식", stores.getContent().get(1).getFoodCategory());
     }
 
     // 필터 조건 미적용 (잘못된 데이터)
@@ -157,11 +206,23 @@ public class StoreServiceTest {
                                  store.getTheme().getTheme().equals("test"))
                 .toList();
 
-        when(storeRepository.findStores(any(), any(), any(), any(), any(Pageable.class)))
-                .thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
+        StoreSearchRequest request = new StoreSearchRequest();
+        request.setLocal("test");
+        request.setFoodCategory("test");
+        request.setTheme("test");
+        request.setSortBy("test");
+        request.setPage(1);
+
+        when(storeRepository.findStores(
+                argThat(local -> local.equals("test")),
+                argThat(category -> category.equals("test")),
+                argThat(theme -> theme.equals("test")),
+                argThat(sortBy -> sortBy.equals("test")),
+                any(Pageable.class)
+        )).thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
 
         // When
-        Page<Store> stores = storeService.findStores("test", "test", "test", "test", 1);
+        Page<StoreResponse> stores = storeService.findStores(request);
 
         // Then
         assertNotNull(stores.getContent());
