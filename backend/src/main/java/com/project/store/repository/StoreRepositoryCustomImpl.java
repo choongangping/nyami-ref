@@ -21,7 +21,7 @@ public class StoreRepositoryCustomImpl implements StoreRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public Page<Store> findStores(String local, String foodCategory, String theme, String sortBy, Pageable pageable) {
+    public Page<Store> findStores(String local, String foodCategory, String theme, String sort, Pageable pageable) {
         QStore store = QStore.store;
 
         BooleanBuilder whereClause = new BooleanBuilder();

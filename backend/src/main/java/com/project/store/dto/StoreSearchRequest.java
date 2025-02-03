@@ -17,7 +17,7 @@ public class StoreSearchRequest {
     private String theme;
 
     @Schema(example = "views")
-    private String sortBy;
+    private String sort;
 
     @Min(value = 1, message = "1 이하의 페이지 번호가 입력되었습니다.")
     private int page = 1;

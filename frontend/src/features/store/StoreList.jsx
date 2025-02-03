@@ -19,9 +19,9 @@ const StoreList = ({ local, foodCategory, theme, sort }) => {
   const queryString = new URLSearchParams(queryEntries).toString();
 
   // 쿼리 파라미터 존재 여부에 따라 url 생성
-  const url = queryString ? `/stores?${queryString}` : '/stores';
+  const url = queryString ? `?${queryString}` : '';
 
-  const { data, error, loading } = useFetch(`/api/stores?${url}`);
+  const { data, error, loading } = useFetch(`/api/stores${url}`);
   const storeList = data?.content;
 
   console.log(data);

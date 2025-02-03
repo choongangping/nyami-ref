@@ -50,6 +50,7 @@ public class StoreController {
     )
     @GetMapping("/stores")
     public ResponseEntity<Page<StoreResponse>> getStores(@Valid StoreSearchRequest request) {
+        log.warn("파라미터: {}", request);
         Page<StoreResponse> stores = storeService.findStores(request);
         return ResponseEntity.ok(stores);
     }

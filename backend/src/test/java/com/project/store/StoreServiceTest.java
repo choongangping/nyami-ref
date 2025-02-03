@@ -66,14 +66,14 @@ public class StoreServiceTest {
         request.setLocal(null);
         request.setFoodCategory(null);
         request.setTheme(null);
-        request.setSortBy(null);
+        request.setSort(null);
         request.setPage(1);
 
         when(storeRepository.findStores(
                 argThat(local -> local == null),
                 argThat(category -> category == null),
                 argThat(theme -> theme == null),
-                argThat(sortBy -> sortBy == null),
+                argThat(sort -> sort == null),
                 any(Pageable.class)
         )).thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
 
@@ -100,14 +100,14 @@ public class StoreServiceTest {
         request.setLocal("강남구");
         request.setFoodCategory(null);
         request.setTheme(null);
-        request.setSortBy(null);
+        request.setSort(null);
         request.setPage(1);
 
         when(storeRepository.findStores(
                 argThat(local -> local.equals("강남구")),
                 argThat(category -> category == null),
                 argThat(theme -> theme == null),
-                argThat(sortBy -> sortBy == null),
+                argThat(sort -> sort == null),
                 any(Pageable.class)
         )).thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
 
@@ -136,14 +136,14 @@ public class StoreServiceTest {
         request.setLocal("강남구");
         request.setFoodCategory(null);
         request.setTheme("혼밥하기 좋은");
-        request.setSortBy(null);
+        request.setSort(null);
         request.setPage(1);
 
         when(storeRepository.findStores(
                 argThat(local -> local.equals("강남구")),
                 argThat(category -> category == null),
                 argThat(theme -> theme.equals("혼밥하기 좋은")),
-                argThat(sortBy -> sortBy == null),
+                argThat(sort -> sort == null),
                 any(Pageable.class)
         )).thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
 
@@ -172,14 +172,14 @@ public class StoreServiceTest {
         request.setLocal(null);
         request.setFoodCategory("한식");
         request.setTheme(null);
-        request.setSortBy(null);
+        request.setSort(null);
         request.setPage(1);
 
         when(storeRepository.findStores(
                 argThat(local -> local == null),
                 argThat(category -> category.equals("한식")),
                 argThat(theme -> theme == null),
-                argThat(sortBy -> sortBy == null),
+                argThat(sort -> sort == null),
                 any(Pageable.class)
         )).thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
 
@@ -210,14 +210,14 @@ public class StoreServiceTest {
         request.setLocal("test");
         request.setFoodCategory("test");
         request.setTheme("test");
-        request.setSortBy("test");
+        request.setSort("test");
         request.setPage(1);
 
         when(storeRepository.findStores(
                 argThat(local -> local.equals("test")),
                 argThat(category -> category.equals("test")),
                 argThat(theme -> theme.equals("test")),
-                argThat(sortBy -> sortBy.equals("test")),
+                argThat(sort -> sort.equals("test")),
                 any(Pageable.class)
         )).thenReturn(new PageImpl<>(filteredStores, pageable, filteredStores.size()));
 
