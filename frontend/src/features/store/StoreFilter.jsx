@@ -105,7 +105,12 @@ const StoreFilter = ({
           placeholder="정렬"
         />
       </div>
-      <TagContainer tags={[local, foodCategory, theme]} />
+      <TagContainer
+        tags={[local, foodCategory, theme]}
+        onLocalChange={onLocalChange}
+        onFoodCategoryChange={onFoodCategoryChange}
+        onThemeChange={onThemeChange}
+      />
     </>
   );
 };
