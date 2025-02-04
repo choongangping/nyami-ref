@@ -21,7 +21,7 @@ public class StoreService {
 
     public Page<StoreResponse> findStores(StoreSearchRequest request) {
         try {
-            Pageable pageable = PageRequest.of(request.getPage() - 1, size, Sort.by("views").descending());
+            Pageable pageable = PageRequest.of(request.getPage(), size, Sort.by("views").descending());
             Page<Store> stores = storeRepository.findStores(
                     request.getLocal(),
                     request.getFoodCategory(),

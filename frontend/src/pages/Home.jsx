@@ -14,23 +14,6 @@ const Home = () => {
   const [theme, setTheme] = useState(''); // 테마 상태
   const [sort, setSort] = useState(''); // 정렬 상태
 
-  // 지역 변경
-  const handleLocalChange = (value) => {
-    console.log(`지역 선택: ${value}`);
-    setLocal(value);
-  };
-
-  // 업종 변경
-  const handleFoodCategoryChange = (value) => {
-    console.log(`업종 선택: ${value}`);
-    setFoodCategory(value);
-  };
-  // 테마 변경
-  const handleThemeChange = (value) => {
-    console.log(`테마 선택: ${value}`);
-    setTheme(value);
-  };
-
   // 슬라이더 설정
   const settings = {
     dots: true,

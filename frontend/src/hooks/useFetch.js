@@ -12,7 +12,7 @@ import React, { useEffect, useState } from 'react';
  * - `loading`: 데이터 로딩 상태(`true` 또는 `false`)
  */
 function useFetch(endpoint, method = 'GET', request = {}) {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const stringifiedRequest = JSON.stringify(request); // 전송 객체를 문자열 형식으로 변환
@@ -20,6 +20,7 @@ function useFetch(endpoint, method = 'GET', request = {}) {
 
   useEffect(() => {
     const controller = new AbortController(); // fetch 요청의 중단 신호를 제어하는 컨트롤러
+    setLoading(true);
 
     const fetchData = async () => {
       try {
