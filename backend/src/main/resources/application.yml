@@ -5,10 +5,18 @@ spring:
   config:
     import: "optional:file:application.secret.yml" # 추가 설정 파일 로드
 
+  # 애플리케이션 이름 및 설정 파일 로드
+  application:
+    name: project-nyami # 애플리케이션 이름
+  config:
+    import: "optional:file:application.secret.yml" # 추가 설정 파일 로드
+
   # JPA 및 Hibernate 설정
   jpa:
     hibernate:
       ddl-auto: update # 스키마 자동 업데이트
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy # 카멜 표기법 자동변환
       naming:
         physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy # 카멜 표기법 자동변환
     properties:
