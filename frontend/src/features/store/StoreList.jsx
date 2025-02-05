@@ -108,7 +108,7 @@ const StoreList = ({ local, foodCategory, theme, sort }) => {
               <Link to={`/store/${store.id}`}>
                 <img
                   className={styles.storeImage}
-                  src={`/images/store/${store.image}`}
+                  src={`${store.image}`}
                   alt={`${store.name} 이미지`}
                 />
                 <div className={styles.storeInfo}>
