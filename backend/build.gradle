@@ -34,6 +34,7 @@ dependencies {
 	// Lombok
 	compileOnly 'org.projectlombok:lombok' // 컴파일 시 Lombok 지원
 	annotationProcessor 'org.projectlombok:lombok' // Lombok 어노테이션 처리
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 
 	// swagger
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0' // API 자동 문서화를 위한 swagger
