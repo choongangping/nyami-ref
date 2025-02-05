@@ -6,7 +6,6 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
-
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
@@ -15,10 +14,10 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
-
   sql:
     init:
       mode: always  # schema.sql, data.sql 실행
+      encoding: utf-8
 
 server:
   port: 0
