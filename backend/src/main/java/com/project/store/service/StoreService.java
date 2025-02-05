@@ -41,4 +41,9 @@ public class StoreService {
             throw new RuntimeException("매장 검색 중 오류가 발생했습니다.", e);
         }
     }
+
+    public StoreResponse findStoreById(int storeId) {
+        Store store = storeRepository.findById(storeId).orElse(null);
+        return StoreMapper.STORE_MAPPER.toDto(store);
+    }
 }

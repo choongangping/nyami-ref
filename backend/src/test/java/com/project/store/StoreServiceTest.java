@@ -21,6 +21,7 @@ import org.springframework.test.context.ActiveProfiles;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
@@ -37,6 +38,8 @@ public class StoreServiceTest {
 
     private List<Store> mockStores;
 
+    private Store mockStore;
+
     @BeforeEach
     void setUp() {
         Local gangnam = new Local(1, "강남구");
@@ -52,6 +55,7 @@ public class StoreServiceTest {
             new Store(3, seocho, chinese, dateTheme, "Store C", "Address C", "Detail Address C", "010-5678-1234", "image3.png", new BigDecimal("500.000"), new BigDecimal("600.000"), "Description C", 400),
             new Store(4, seocho, korean, soloTheme, "Store D", "Address D", "Detail Address D", "010-4321-8765", "image4.png", new BigDecimal("700.000"), new BigDecimal("800.000"), "Description D", 200)
         );
+        mockStore = new Store(1, gangnam, korean, dateTheme, "Store A", "Address A", "Detail Address A", "010-1234-5678", "image1.png", new BigDecimal("100.000"), new BigDecimal("200.000"), "Description A", 100);
     }
 
     // 필터 조건 없음
@@ -229,5 +233,21 @@ public class StoreServiceTest {
         // Then
         assertNotNull(stores.getContent());
         assertTrue(stores.isEmpty());
+    }
+
+    // 특정 가게 조회
+    @Test
+    @DisplayName("가게의 id로 특정 가게를 조회합니다.")
+    void getStoreById() {
+        // Given
+        when(storeRepository.findById(anyInt())).thenReturn(Optional.of(mockStore));
+
+        // When
+        StoreResponse store = storeService.findStoreById(1);
+
+        // Then
+        assertNotNull(store);
+        assertEquals(1, store.getId());
+        assertEquals("강남구", store.getLocal());
     }
 }
