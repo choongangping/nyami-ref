@@ -1,5 +1,6 @@
 package com.project.store.service;
 
+import com.project.store.dto.StoreWithMenuDto;
 import com.project.store.dto.StoreResponse;
 import com.project.store.dto.StoreSearchRequest;
 import com.project.store.entity.Store;
@@ -42,8 +43,7 @@ public class StoreService {
         }
     }
 
-    public StoreResponse findStoreById(int storeId) {
-        Store store = storeRepository.findById(storeId).orElse(null);
-        return StoreMapper.STORE_MAPPER.toDto(store);
+    public StoreWithMenuDto findStoreById(int storeId) {
+        return storeRepository.findStoreById(storeId).orElse(null);
     }
 }

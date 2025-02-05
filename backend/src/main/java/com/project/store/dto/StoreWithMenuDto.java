@@ -1,19 +1,21 @@
 package com.project.store.dto;
 
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "가게 응답 Dto")
-public class StoreResponse {
+@Schema(description = "메뉴가 포함된 가게 Dto")
+public class StoreWithMenuDto {
     private int id;
 
     @Schema(example = "서초구")
@@ -46,4 +48,14 @@ public class StoreResponse {
     private String description;
 
     private int views;
+
+    @ArraySchema(
+            schema = @Schema(type = "object", description = "A menu item", example = "{\"id\": 1," +
+                                                                                      "\"name\": \"Menu 1\"," +
+                                                                                      "\"price\": 10000," +
+                                                                                      "\"description\": \"맛있는 메뉴\"," +
+                                                                                      "\"image\": \"/images/menu_1.png\"}")
+    )
+    private List<MenuDto> menus;
+
 }

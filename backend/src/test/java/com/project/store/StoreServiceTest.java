@@ -1,5 +1,6 @@
 package com.project.store;
 
+import com.project.store.dto.StoreWithMenuDto;
 import com.project.store.dto.StoreResponse;
 import com.project.store.dto.StoreSearchRequest;
 import com.project.store.entity.FoodCategory;
@@ -240,14 +241,34 @@ public class StoreServiceTest {
     @DisplayName("가게의 id로 특정 가게를 조회합니다.")
     void getStoreById() {
         // Given
-        when(storeRepository.findById(anyInt())).thenReturn(Optional.of(mockStore));
+        StoreWithMenuDto storeDto = new StoreWithMenuDto();
+        storeDto.setId(1);
+        storeDto.setLocal("강남구");
+        storeDto.setFoodCategory("한식");
+        storeDto.setTheme("혼밥하기 좋은");
+        storeDto.setName("테스트 가게");
+        when(storeRepository.findStoreById(anyInt())).thenReturn(Optional.of(storeDto));
 
         // When
-        StoreResponse store = storeService.findStoreById(1);
+        StoreWithMenuDto result = storeService.findStoreById(1);
 
         // Then
-        assertNotNull(store);
-        assertEquals(1, store.getId());
-        assertEquals("강남구", store.getLocal());
+        assertNotNull(result);
+        assertEquals(1, result.getId());
+        assertEquals("강남구", result.getLocal());
+    }
+
+    // 잘못된 데이터의 가게 조회
+    @Test
+    @DisplayName("잘못된 id를 전달한 경우의 가게를 조회합니다.")
+    void getStoreByWrongId() {
+        // Given
+        when(storeRepository.findStoreById(anyInt())).thenReturn(Optional.empty());
+
+        // When
+        StoreWithMenuDto result = storeService.findStoreById(0);
+
+        // Then
+        assertNull(result);
     }
 }
