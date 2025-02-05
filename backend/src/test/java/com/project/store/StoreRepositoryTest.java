@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) // 실제 DB 사용
 @ExtendWith(SpringExtension.class)
 @Import(QuerydslConfig.class)  // QuerydslConfig 추가
+@ActiveProfiles("test")
 public class StoreRepositoryTest {
     @Autowired
     private StoreRepository storeRepository;
