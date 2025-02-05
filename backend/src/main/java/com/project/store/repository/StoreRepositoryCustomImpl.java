@@ -6,7 +6,7 @@ import com.project.store.entity.QMenu;
 import com.project.store.entity.QStore;
 import com.project.store.entity.Store;
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.Tuple;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,47 +57,21 @@ public class StoreRepositoryCustomImpl implements StoreRepositoryCustom {
         QStore store = QStore.store;
         QMenu menu = QMenu.menu;
 
-        List<Tuple> result = queryFactory
-                .select(store, menu)
+        // Projections를 사용하여 결과를 자동으로 dto에 매핑
+        List<StoreWithMenuDto> stores = queryFactory
+                .select(Projections.constructor(StoreWithMenuDto.class,
+                        store.id, store.local.local, store.foodCategory.foodCategory, store.theme.theme,
+                        store.name, store.address, store.detailAddress, store.tel, store.image, store.x,
+                        store.y, store.description, store.views,
+                        Projections.list(Projections.constructor(MenuDto.class,
+                                menu.id, menu.name, menu.price, menu.description, menu.image
+                        ))
+                ))
                 .from(store)
                 .leftJoin(menu).on(menu.store.id.eq(store.id))
                 .where(store.id.eq(id))
                 .fetch();
 
-        StoreWithMenuDto storeDto = null;
-        List<MenuDto> menus = new ArrayList<>();
-
-        for (Tuple row : result) {
-            if (storeDto == null) {
-                storeDto = new StoreWithMenuDto(
-                        Optional.ofNullable(row.get(store.id)).orElse(0),
-                        row.get(store.local.local),
-                        row.get(store.foodCategory.foodCategory),
-                        row.get(store.theme.theme),
-                        row.get(store.name),
-                        row.get(store.address),
-                        row.get(store.detailAddress),
-                        row.get(store.tel),
-                        row.get(store.image),
-                        row.get(store.x),
-                        row.get(store.y),
-                        row.get(store.description),
-                        Optional.ofNullable(row.get(store.views)).orElse(0),
-                        menus
-                );
-            }
-
-            if (row.get(menu.id) != null) {
-                menus.add(new MenuDto(
-                        Optional.ofNullable(row.get(menu.id)).orElse(0),
-                        row.get(menu.name),
-                        Optional.ofNullable(row.get(menu.price)).orElse(0),
-                        row.get(menu.description),
-                        row.get(menu.image)
-                ));
-            }
-        }
-
-        return storeDto == null ? Optional.empty() : Optional.of(storeDto);
+        return stores.stream().findFirst();
     }
 }
