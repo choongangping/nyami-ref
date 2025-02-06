@@ -74,7 +74,7 @@ public class StoreController {
                     @ApiResponse(
                             responseCode = "404",
                             description = "일치하는 가게가 없음",
-                            content = @Content(mediaType = "application/json", schema = @Schema(nullable = true))
+                            content = @Content(mediaType = "application/json", schema = @Schema())
                     ),
                     @ApiResponse(
                             responseCode = "500",
