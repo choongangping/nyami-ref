@@ -55,10 +55,6 @@ jobs:
       - name: Grant execute permission to Gradle Wrapper
         run: chmod +x gradlew
 
-      # 테스트 디버깅용 로그를 출력합니다.
-      - name: Build Project (Detailed Logging)
-        run: ./gradlew build --no-daemon --info --stacktrace --scan
-
       # gradle 빌드를 실행합니다.
       - name: Build Project
         run: ./gradlew build --no-daemon
