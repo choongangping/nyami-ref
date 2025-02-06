@@ -59,9 +59,13 @@ jobs:
       - name: Build Project
         run: ./gradlew build --no-daemon
 
+      # 테스트 디버깅용 로그를 출력합니다.
+      - name: Run Tests (Detailed Logging)
+        run: ./gradlew test --no-daemon --info --stacktrace --scan
+
       # gradle 단위 테스트를 실행합니다.
       - name: Run Tests
-        run: ./gradlew test --no-daemon -Dspring.config.location=classpath:/application-test.yml
+        run: ./gradlew test --no-daemon
 
       # gradle 코드 스타일을 검사합니다.
       - name: Lint Check
