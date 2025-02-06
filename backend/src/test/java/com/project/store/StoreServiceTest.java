@@ -250,12 +250,12 @@ public class StoreServiceTest {
         when(storeRepository.findStoreById(anyInt())).thenReturn(Optional.of(storeDto));
 
         // When
-        StoreWithMenuDto result = storeService.findStoreById(1);
+        Optional<StoreWithMenuDto> result = storeService.findStoreById(1);
 
         // Then
-        assertNotNull(result);
-        assertEquals(1, result.getId());
-        assertEquals("강남구", result.getLocal());
+        assertTrue(result.isPresent());
+        assertEquals(1, result.get().getId());
+        assertEquals("강남구", result.get().getLocal());
     }
 
     // 잘못된 데이터의 가게 조회
@@ -266,9 +266,9 @@ public class StoreServiceTest {
         when(storeRepository.findStoreById(anyInt())).thenReturn(Optional.empty());
 
         // When
-        StoreWithMenuDto result = storeService.findStoreById(0);
+        Optional<StoreWithMenuDto> result = storeService.findStoreById(0);
 
         // Then
-        assertNull(result);
+        assertTrue(result.isEmpty());
     }
 }

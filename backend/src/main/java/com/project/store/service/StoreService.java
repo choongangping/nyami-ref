@@ -12,6 +12,7 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -43,7 +44,7 @@ public class StoreService {
         }
     }
 
-    public StoreWithMenuDto findStoreById(int storeId) {
-        return storeRepository.findStoreById(storeId).orElse(null);
+    public Optional<StoreWithMenuDto> findStoreById(int storeId) {
+        return storeRepository.findStoreById(storeId);
     }
 }
