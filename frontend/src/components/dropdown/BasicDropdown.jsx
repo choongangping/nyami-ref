@@ -52,9 +52,6 @@ const BasicDropdown = ({
       const top = buttonRect.bottom + window.scrollY;
       const left = buttonRect.left;
 
-      console.log(top);
-      console.log(left);
-
       dropdown.style.top = `${top + 10}px`;
       dropdown.style.left = left < 1000 ? `${left}px` : '-100px';
     }

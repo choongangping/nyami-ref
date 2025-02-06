@@ -2,12 +2,16 @@ package com.project.store.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Schema(description = "가게 응답 Dto")
 public class StoreResponse {
     private int id;
@@ -30,7 +34,7 @@ public class StoreResponse {
     @Schema(example = "00-000-0000")
     private String tel;
 
-    @Schema(example = "/images/image.png")
+    @Schema(example = "/images/store_1.png")
     private String image;
 
     @Schema(example = "10000000.000", type = "number", format = "decimal")
@@ -41,5 +45,5 @@ public class StoreResponse {
 
     private String description;
 
-    private int views = 0;
+    private int views;
 }

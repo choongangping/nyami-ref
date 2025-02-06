@@ -1,0 +1,23 @@
+# 테스트 환경에서 적용되는 환경 파일
+spring:
+  datasource:
+    # 인메모리 db (h2)
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=SET NAMES UTF8
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always  # schema.sql, data.sql 실행
+      encoding: utf-8
+
+server:
+  port: 0

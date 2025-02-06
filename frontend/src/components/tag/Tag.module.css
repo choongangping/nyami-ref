@@ -5,3 +5,9 @@
   padding: 0.5rem 1rem;
   font-size: 14px;
 }
+
+.tagContent {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

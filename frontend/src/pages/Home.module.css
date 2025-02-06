@@ -15,7 +15,7 @@
 .topContent {
   flex: 1;
   background-color: #f7f7f7;
-  padding: 20px;
+  padding: 20px 40px;
   border-radius: 5px;
 }
 
@@ -69,35 +69,4 @@
 ********************************/
 .storeContainer {
   margin-top: 50px;
-}
-
-.categoryButtonWrapper {
-  display: flex;
-}
-
-.tagContainer {
-  margin-top: 20px;
-  display: flex;
-  gap: 15px;
-}
-
-.storeListContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 70px;
-  padding: 70px;
-}
-
-.storeList {
-  margin: 0 auto;
-}
-
-.storeListImage {
-  width: 100%;
-  max-width: 350px;
-}
-
-.storeListName {
-  text-align: center;
-  margin-top: 10px;
 }

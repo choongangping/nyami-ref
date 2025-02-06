@@ -20,6 +20,7 @@ function useFetch(endpoint, method = 'GET', request = {}) {
 
   useEffect(() => {
     const controller = new AbortController(); // fetch 요청의 중단 신호를 제어하는 컨트롤러
+    setLoading(true);
 
     const fetchData = async () => {
       try {

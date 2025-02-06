@@ -1,0 +1,9 @@
+.filterContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.categoryButtonWrapper {
+  display: flex;
+  gap: 20px;
+}

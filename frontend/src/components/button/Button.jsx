@@ -20,9 +20,7 @@ const Button = ({
 }) => {
   return (
     <button
-      className={`${styles.btn} ${styles[size]} ${
-        disabled ? styles.disabled : ''
-      }`}
+      className={`${styles.btn} ${disabled ? styles.disabled : ''}`}
       type="button"
       onClick={!disabled && onClick ? onClick : undefined}
       disabled={disabled}

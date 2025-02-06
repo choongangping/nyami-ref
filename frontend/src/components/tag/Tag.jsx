@@ -1,9 +1,9 @@
 import styles from './Tag.module.css';
 
-const Tag = ({ children }) => {
+const Tag = ({ children, ...props }) => {
   return (
-    <div className={styles.tag}>
-      <span>{children}</span>
+    <div className={styles.tag} {...props}>
+      <span className={styles.tagContent}>{children}</span>
     </div>
   );
 };

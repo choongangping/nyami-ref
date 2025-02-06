@@ -27,9 +27,23 @@ dependencies {
 	// MySQL 데이터베이스 드라이버
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
+	// Mapstruct
+	implementation 'org.mapstruct:mapstruct:1.6.3'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+
 	// Lombok
 	compileOnly 'org.projectlombok:lombok' // 컴파일 시 Lombok 지원
 	annotationProcessor 'org.projectlombok:lombok' // Lombok 어노테이션 처리
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+	// swagger
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0' // API 자동 문서화를 위한 swagger
+
+	// Querydsl
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
+	annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+	annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
 
 	// swagger
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0' // API 자동 문서화를 위한 swagger
@@ -46,6 +60,7 @@ dependencies {
 	testImplementation 'org.springframework.graphql:spring-graphql-test' // Graphql 테스트
 	testImplementation 'com.h2database:h2' // 테스트용 H2 데이터베이스
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // JUnit 테스트 실행기
+	testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3' // mapstruct 테스트
 }
 
 tasks.named('test') {

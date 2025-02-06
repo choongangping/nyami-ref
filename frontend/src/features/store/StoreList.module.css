@@ -1,0 +1,48 @@
+.storeListContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 60px;
+  padding: 50px 30px;
+}
+
+.storeCard {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.storeImage {
+  width: 100%;
+  max-width: 350px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.storeInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.storeName {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.storeLocal {
+  font-size: 14px;
+}
+
+.storeStats {
+  font-size: 15px;
+  color: #7e7e7e;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.storeMeta {
+  display: flex;
+  align-items: center;
+}

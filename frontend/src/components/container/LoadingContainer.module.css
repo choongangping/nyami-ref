@@ -1,0 +1,14 @@
+.loadingContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: #333;
+  font-size: 16px;
+}
+
+.loadingContainer {
+  color: #8f8f8f;
+}
