@@ -40,17 +40,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # application.secret.yml 파일을 생성합니다.
-      - name: Create application.secret.yml
-        run: |
-          echo "spring:" > backend/src/main/resources/application.secret.yml
-          echo "  datasource:" >> backend/src/main/resources/application.secret.yml
-          echo "    url: jdbc:mysql://${{ secrets.DB_HOST }}:${{ secrets.DB_PORT }}/${{ secrets.DB_NAME }}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8" >> backend/src/main/resources/application.secret.yml
-          echo "    username: ${{ secrets.DB_USER }}" >> backend/src/main/resources/application.secret.yml
-          echo "    password: ${{ secrets.DB_PASS }}" >> backend/src/main/resources/application.secret.yml
-          echo "    driver-class-name: com.mysql.cj.jdbc.Driver" >> backend/src/main/resources/application.secret.yml
-
-
       # Github actions 실행 시에 gradle 캐시를 저장해 빌드 속도를 최적화합니다.
       - name: Cache Gradle packages
         uses: actions/cache@v3
