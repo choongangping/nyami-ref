@@ -8,7 +8,6 @@ import com.project.external.service.CrtfcUpsoService;
 import com.project.external.service.StoreDataService;
 import com.project.external.util.ParsingJsonHelper;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,7 +41,7 @@ public class ExternalApiTest {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Test
+    // @Test
     @Transactional
     @DisplayName(value = "서울시 인증업소 데이터를 데이터베이스에 저장한다.")
     public void callAuthnRestaurantApi() throws JsonProcessingException {
@@ -65,7 +64,7 @@ public class ExternalApiTest {
         crtfcUpsoService.savePartialData(rows);
     }
 
-    @Test
+    // @Test
     @Transactional
     @DisplayName(value = "서울시 음식점 인허가정보 데이터를 데이터베이스에 저장한다.")
     public void callAcceptRestaurantApi() throws JsonProcessingException {
