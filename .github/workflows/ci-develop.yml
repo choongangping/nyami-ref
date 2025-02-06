@@ -14,6 +14,9 @@ jobs:
   build_and_test:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
 
     steps:
       # pr에 포함된 코드를 Github actions 서버에 다운로드합니다.
@@ -37,6 +40,10 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
+      # Github actions에 gradlew 파일의 실행 권한을 부여합니다.
+      - name: Grant execute permission to Gradle Wrapper
+        run: chmod +x gradlew
 
       # gradle 빌드를 실행합니다.
       - name: Build Project
