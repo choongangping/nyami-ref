@@ -130,6 +130,7 @@ public class StoreRepositoryTest {
         // Then
         assertTrue(store.isPresent());
         assertEquals(5, store.get().getId());
+        assertTrue(2 <= store.get().getMenus().size());
     }
     
     @Test

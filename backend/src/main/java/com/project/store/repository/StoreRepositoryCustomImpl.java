@@ -6,7 +6,7 @@ import com.project.store.entity.QMenu;
 import com.project.store.entity.QStore;
 import com.project.store.entity.Store;
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Projections;
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +15,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 // Querydsl 인터페이스의 구현체 (구현체에 동적 쿼리 작성)
 @Repository
@@ -57,21 +56,53 @@ public class StoreRepositoryCustomImpl implements StoreRepositoryCustom {
         QStore store = QStore.store;
         QMenu menu = QMenu.menu;
 
-        // Projections를 사용하여 결과를 자동으로 dto에 매핑
-        List<StoreWithMenuDto> stores = queryFactory
-                .select(Projections.constructor(StoreWithMenuDto.class,
-                        store.id, store.local.local, store.foodCategory.foodCategory, store.theme.theme,
+        List<Tuple> result = queryFactory
+                .select(store.id, store.local.local, store.foodCategory.foodCategory, store.theme.theme,
                         store.name, store.address, store.detailAddress, store.tel, store.image, store.x,
                         store.y, store.description, store.views,
-                        Projections.list(Projections.constructor(MenuDto.class,
-                                menu.id, menu.name, menu.price, menu.description, menu.image
-                        ))
-                ))
+                        menu.id, menu.name, menu.price, menu.description, menu.image)
                 .from(store)
                 .leftJoin(menu).on(menu.store.id.eq(store.id))
                 .where(store.id.eq(id))
                 .fetch();
 
-        return stores.stream().findFirst();
+        // 중복된 가게를 제거하는 Map 객체
+        Map<Integer, StoreWithMenuDto> storeMap = new HashMap<>();
+
+        for (Tuple row : result) {
+            int storeId = Optional.ofNullable(row.get(store.id)).orElse(0);
+
+            // 기존 StoreWithMenuDto가 없으면 새로 생성
+            StoreWithMenuDto storeDto = storeMap.computeIfAbsent(storeId, idKey -> new StoreWithMenuDto(
+                    idKey,
+                    row.get(store.local.local),
+                    row.get(store.foodCategory.foodCategory),
+                    row.get(store.theme.theme),
+                    row.get(store.name),
+                    row.get(store.address),
+                    row.get(store.detailAddress),
+                    row.get(store.tel),
+                    row.get(store.image),
+                    row.get(store.x),
+                    row.get(store.y),
+                    row.get(store.description),
+                    Optional.ofNullable(row.get(store.views)).orElse(0),
+                    new ArrayList<>()
+            ));
+
+            // 메뉴가 존재하면 추가
+            if (row.get(menu.id) != null) {
+                storeDto.getMenus().add(new MenuDto(
+                        Optional.ofNullable(row.get(menu.id)).orElse(0),
+                        row.get(menu.name),
+                        Optional.ofNullable(row.get(menu.price)).orElse(0),
+                        row.get(menu.description),
+                        row.get(menu.image)
+                ));
+            }
+        }
+
+        return Optional.ofNullable(storeMap.get(id));
     }
+
 }
