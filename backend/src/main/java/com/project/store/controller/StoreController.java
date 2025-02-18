@@ -53,9 +53,6 @@ public class StoreController {
     @GetMapping("/stores")
     public ResponseEntity<Page<StoreResponse>> getStores(@Valid StoreSearchRequest request) {
         log.warn("파라미터: {}", request);
-        if (request.getPage() < 0) {
-            return ResponseEntity.badRequest().body(null);
-        }
         Page<StoreResponse> stores = storeService.findStores(request);
         return ResponseEntity.ok(stores);
     }
@@ -77,7 +74,7 @@ public class StoreController {
                     @ApiResponse(
                             responseCode = "404",
                             description = "일치하는 가게가 없음",
-                            content = @Content(mediaType = "application/json", schema = @Schema())
+                            content = @Content(mediaType = "application/json", schema = @Schema(nullable = true))
                     ),
                     @ApiResponse(
                             responseCode = "500",

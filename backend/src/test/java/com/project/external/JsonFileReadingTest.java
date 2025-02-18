@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.Arrays;
@@ -14,10 +15,15 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * JSON 파일 테스트 클래스
+ *   Spring 컨텍스트에 독립적이므로 @SpringBootTest 애노테이션 불필요
+ *   Bean 등을 사용하지 않기 때문에 Spring 컨텍스트 로드는 불필요한 작업
+ */
 public class JsonFileReadingTest {
 
     // restaurant.json 파일 테스트 (적은 데이터)
-    // @Test
+    @Test
     @DisplayName(value = ".json 파일을 로드한다.")
     public void testJsonNodeParsing() throws Exception {
         String filePath = "C:\\restaurant.json";
@@ -58,7 +64,7 @@ public class JsonFileReadingTest {
     }
 
     // accept_restaurant.json 테스트 (대용량 데이터)
-    // @Test
+    @Test
     @DisplayName(value = "대용량 .json 파일을 스트리밍 처리한다.")
     public void testJsonStreaming() throws Exception {
         String filePath = "C:\\accept_restaurant.json";

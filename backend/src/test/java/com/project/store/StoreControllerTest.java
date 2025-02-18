@@ -152,6 +152,7 @@ public class StoreControllerTest {
                 .param("page", "-1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("잘못된 요청을 전송하였습니다."));
     }
 }

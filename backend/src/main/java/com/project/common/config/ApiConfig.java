@@ -10,7 +10,7 @@ import java.time.Duration;
 
 /** api 환경 설정 클래스 */
 @Configuration
-// @PropertySource("classpath:config.properties")
+@PropertySource("classpath:config.properties")
 public class ApiConfig {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
