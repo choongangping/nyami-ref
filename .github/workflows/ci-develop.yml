@@ -14,11 +14,24 @@ jobs:
   build_and_test:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
 
     steps:
       # pr에 포함된 코드를 Github actions 서버에 다운로드합니다.
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      # application.yml의 환경 변수를 설정합니다.
+      - name: Set environment variables
+        run: |
+          echo "DB_HOST=${{ secrets.DB_HOST }}" >> $GITHUB_ENV
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> $GITHUB_ENV
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> $GITHUB_ENV
+          echo "DB_USER=${{ secrets.DB_USER }}" >> $GITHUB_ENV
+          echo "DB_PASS=${{ secrets.DB_PASS }}" >> $GITHUB_ENV
+          echo "LOG_PATH=${{ secrets.LOG_PATH }}" >> $GITHUB_ENV
 
       # jdk 버전을 17로 설정합니다.
       - name: Set up JDK
@@ -37,6 +50,10 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
+      # Github actions에 gradlew 파일의 실행 권한을 부여합니다.
+      - name: Grant execute permission to Gradle Wrapper
+        run: chmod +x gradlew
 
       # gradle 빌드를 실행합니다.
       - name: Build Project
