@@ -34,7 +34,7 @@ const LoginForm = () => {
             disabled={false}
             customStyles={{
               width: '10.5rem',
-              height: '1.5rem',
+              height: '2rem',
               fontSize: '0.6rem',
             }}
             onClick={(e) => {
